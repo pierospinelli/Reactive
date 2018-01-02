@@ -1,0 +1,55 @@
+{ 
+    "_id" : ObjectId("5a0ee1999f59851ae48279c1"), 
+    "value" : "0", 
+    "label" : "Contravvenzione"
+}
+{ 
+    "_id" : ObjectId("5a0ee1999f59851ae48279c2"), 
+    "value" : "1", 
+    "label" : "Servizio Scolastico"
+}
+{ 
+    "_id" : ObjectId("5a0ee1999f59851ae48279c3"), 
+    "value" : "2", 
+    "label" : "COSAP"
+}
+{ 
+    "_id" : ObjectId("5a0ee1999f59851ae48279c4"), 
+    "value" : "3", 
+    "label" : "CIP"
+}
+{ 
+    "_id" : ObjectId("5a0ee1999f59851ae48279c5"), 
+    "value" : "8", 
+    "label" : "Certificato Anagrafico"
+}
+{ 
+    "_id" : ObjectId("5a0ee1999f59851ae48279c6"), 
+    "value" : "9", 
+    "label" : "Reversale"
+}
+{ 
+    "_id" : ObjectId("5a0ee1999f59851ae48279c7"), 
+    "value" : "10", 
+    "label" : "Contributo di Soggiorno"
+}
+{ 
+    "_id" : ObjectId("5a0ee1999f59851ae48279c8"), 
+    "value" : "11", 
+    "label" : "BiblioCard"
+}
+{ 
+    "_id" : ObjectId("5a0ee1999f59851ae48279c9"), 
+    "value" : "12", 
+    "label" : "Canone Impianti Sportivi"
+}
+{ 
+    "_id" : ObjectId("5a0ee1999f59851ae48279ca"), 
+    "value" : "MULTI", 
+    "label" : "Più di un credito"
+}
+{ 
+    "_id" : ObjectId("5a0ee1999f59851ae48279cb"), 
+    "value" : "NA", 
+    "label" : "Altro..."
+}

@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+<!-- 	<base href="/ePizzino"> -->
+	<meta charset="UTF-8">
+
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+	
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
+<!--
+ 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" 
+			integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" 
+			crossorigin="anonymous">
+ -->
+
+	<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"
+		integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n"
+		crossorigin="anonymous"></script>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>		
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"
+		integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb"
+		crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" 
+		integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" 
+		crossorigin="anonymous"></script>		
+
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<!-- 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" 
+			integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" 
+			crossorigin="anonymous"></script>		
+ -->
+ 	<link rel="stylesheet" href="./css/custom.css" >
+
+		
+	<title>e-pizzino</title>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+</head>
+
+<body ng-app="SegnalazioniPagamentiApp">
+	<div ng-hide="operatore">
+		<div ng-include="'./html/login.html'"></div>
+	</div>
+	
+	<div ng-show="operatore" ng-controller="mainCtrl">
+		<div ng-include="'./html/header.html'"></div>
+		<div ng-include="'./html/elenco.html'"></div>
+		<div ng-include="'./html/editor.html'"></div>
+	</div>
+	
+	<div ng-include="'./html/modal.html'"></div>
+	
+</body>
+
+<script>
+	var app = angular.module("SegnalazioniPagamentiApp", []);
+	app.config(["$locationProvider", function($locationProvider){
+		$locationProvider.html5Mode({
+			  enabled: true,
+			  requireBase: false
+			});		
+	}]);
+	app.run([ "$rootScope", function($rootScope) {
+		
+		
+		$rootScope.operatore = null;
+		$rootScope.lista = true;
+		$rootScope.ente = "Tutti";
+		$rootScope.modal = {cancel: "Esci", ok: "Conferma", header: "Commento e Conferma", prompt: "Commento"};
+	  
+		$rootScope.dati = {};
+		$rootScope.dati.contatto = {};
+		$rootScope.dati.richiedente = {};
+		$rootScope.dati.segnalazione = {};
+		$rootScope.dati.pagamento = {};
+		$rootScope.dati.history = [];
+		$rootScope.dati.esitiSuggerimenti = {};
+
+	}]);
+</script>
+
+<script type="text/javascript" src="./js/directives.js"></script>
+<script type="text/javascript" src="./js/utilService.js"></script>
+<script type="text/javascript" src="./js/configService.js"></script>
+<script type="text/javascript" src="./js/suggerimentiCtrl.js"></script>
+<script type="text/javascript" src="./js/backEndDAO.js"></script>
+<script type="text/javascript" src="./js/backEndService.js"></script>
+<script type="text/javascript" src="./js/loginCtrl.js"></script>
+<script type="text/javascript" src="./js/historyCtrl.js"></script>
+<script type="text/javascript" src="./js/mainCtrl.js"></script>
+<!-- <script type="text/javascript" src="./js/richiestaCtrl.js"></script> -->
+<!-- <script type="text/javascript" src="./js/modoContattoCtrl.js"></script> -->
+<!-- <script type="text/javascript" src="./js/datiRichiedenteCtrl.js"></script> -->
+<script type="text/javascript" src="./js/segnalazioneCtrl.js"></script>
+<!-- <script type="text/javascript" src="./js/datiPagamentoCtrl.js"></script> -->
+
+</html>

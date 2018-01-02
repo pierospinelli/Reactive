@@ -1,0 +1,111 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>reactive.root</artifactId>
+	<packaging>pom</packaging>
+	<name>it.pjsoft.reactive.root</name>
+
+	
+	<parent>
+		<groupId>it.pjsoft.reactive</groupId>
+		<artifactId>reactive.version.root</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+		<relativePath>../reactive.version.root</relativePath>
+	</parent>
+	
+	<properties>
+
+	</properties>
+
+	<dependencyManagement>
+		<dependencies>
+	
+
+		</dependencies>
+	</dependencyManagement>
+
+	<dependencies>
+
+		<dependency>
+			<groupId>org.osgi</groupId>
+			<artifactId>org.osgi.core</artifactId>
+            <version>${osgi.version}</version>
+ 			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>biz.aQute</groupId>
+			<artifactId>bndlib</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.osgi</groupId>
+			<artifactId>osgi.enroute.base.api</artifactId>
+		</dependency>
+
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.apache.karaf.features</groupId> -->
+<!-- 			<artifactId>standard</artifactId> -->
+<!-- 			<version>4.1.2</version> -->
+<!-- 			<type>pom</type> -->
+<!-- 		</dependency> -->
+
+		<dependency>
+			<groupId>org.apache.karaf.scheduler</groupId>
+			<artifactId>org.apache.karaf.scheduler.core</artifactId>
+			<scope>provided</scope>
+		</dependency>
+
+	    <dependency>
+	        <groupId>org.mongodb</groupId>
+	        <artifactId>mongodb-driver</artifactId>
+	        <version>3.5.0</version>
+	    </dependency>
+
+        <!-- Just for the remote service admin spec -->
+        <dependency>
+        	<groupId>org.apache.aries.rsa</groupId>
+        	<artifactId>org.apache.aries.rsa.core</artifactId>
+        	<version>${aries.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.aries.rsa</groupId>
+            <artifactId>org.apache.aries.rsa.spi</artifactId>
+            <version>${aries.version}</version>
+        </dependency>
+
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>${java.version}</source>
+					<target>${java.version}</target>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.felix</groupId>
+				<artifactId>maven-bundle-plugin</artifactId>
+				<extensions>true</extensions>
+				<configuration>
+					<instructions>
+						<_include>-bnd.bnd</_include>
+					</instructions>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+	
+	<modules>
+		<module>../reactive.core</module>
+		<module>../reactive.generic</module>
+		<module>../reactive.rs</module>
+		<module>../reactive.mailer</module>
+	</modules>
+
+</project>

@@ -1,0 +1,15 @@
+{ 
+    "_id" : ObjectId("5a1141bb9f59853e3ca6881b"), 
+    "id" : "NA", 
+    "label" : "Anonimo"
+}
+{ 
+    "_id" : ObjectId("5a1141c39f59853e3ca6881c"), 
+    "id" : "PF", 
+    "label" : "Persona Fisica"
+}
+{ 
+    "_id" : ObjectId("5a1141c89f59853e3ca6881d"), 
+    "id" : "PG", 
+    "label" : "Persona Giuridica"
+}

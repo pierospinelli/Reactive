@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+
+<div ng-controller="loginCtrl" ng-hide="operatore" style="height: 33%; width:33%; background: lightgray" >
+		<label for="t1">Operatore</label>
+		<input id="t1" type="text" ng-model="account" />
+		<br/><label for="t3">Password</label>
+		<input id="t2" type="password" ng-model="pswd" />
+		<br/><button ng-click="login()">Login</button>
+		<p style="color: red">{{error}}</p>
+</div>
+
+
+</html>

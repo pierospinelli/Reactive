@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+
+<table ng-hide="lista" width="100%" height="100%">
+	<tr style="background: blue; color: yellow; font: bold xx-large;">
+		<th>Segnalazione ID: {{dati._id}}</th>
+		<th>Mittente: {{dati.mittente.nome}}</th>
+		<th>Ente: {{enti[dati.ente].nome}}</th>
+		<th>Stato: {{dati.stato}}</th>
+	</tr>
+	<tr style="vertical-align: top; height:0%">
+		<td>Creazione: {{dati.dataCreazione  | date:'dd/MM/yyyy HH:mm'}}</td>
+		<td>Primo Invio: {{dati.dataSpedizione  | date:'dd/MM/yyyy HH:mm'}}</td>
+		<td>Ultimo Invio: {{dati.dataUltimaSpedizione  | date:'dd/MM/yyyy HH:mm'}}</td>
+		<td>
+			&nbsp;&nbsp;<span class="glyphicon glyphicon-edit" ng-show="dati.modificato && !dirty" style="cursor:pointer; color:red; font-size:x-large;" title="Modifiche locali. Click per eliminare le modifiche correnti. Premere il pulsante 'send' per renderle pubbliche."  ng-click="dropDraft()"></span>				
+			&nbsp;&nbsp;<span class="glyphicon glyphicon-floppy-save" ng-show="dirty" style="cursor:pointer; font-size:x-large;" title="Salva modifiche"  ng-click="save()"></span>				
+			&nbsp;&nbsp;<span class="glyphicon glyphicon-send" ng-show="(dati.stato!='RISOLTA' && dati.stato!='CHIUSA') && isComplete()" style="cursor:pointer; font-size:x-large; color: green" title="Salva e Spedisci" ng-click="send()"></span>				
+			&nbsp;&nbsp;<span class="glyphicon glyphicon-send" ng-show="(dati.stato!='RISOLTA' && dati.stato!='CHIUSA') && !isComplete()" style="cursor:pointer; font-size:x-large; color: red" title="Salva e Forza spedizione con Dati Incompleti" ng-click="send(true)"></span>				
+			&nbsp;&nbsp;<span class="glyphicon glyphicon-download-alt" style="cursor:pointer; font-size:x-large; color: green" ng-show="operatore.ruolo=='backoffice' && dati.stato=='APERTA' && !lista" ng-click="changeStatus('IN_CARICO')" title="Prendi in carico"></span>
+        	&nbsp;&nbsp;<span class="glyphicon glyphicon-folder-open" style="cursor:pointer; font-size:x-large; color: green" ng-show="operatore.ruolo=='backoffice' && (dati.stato=='APERTA' || dati.stato=='IN_CARICO'  || dati.stato=='SOSPESA' || dati.stato=='ATTESA_INFO') && !lista" ng-click="changeStatus('IN_LAVORAZIONE')" title="Metti in lavorazione"></span>
+        	&nbsp;&nbsp;<span class="glyphicon glyphicon-time" style="cursor:pointer; font-size:x-large; color: orange" ng-show="(dati.stato=='APERTA' || dati.stato=='IN_CARICO'  || dati.stato=='IN_LAVORAZIONE' || dati.stato=='ATTESA_INFO') && !lista" ng-click="changeStatus('SOSPESA')" title="Sospendi"></span>
+        	&nbsp;&nbsp;<span class="glyphicon glyphicon-alert" style="cursor:pointer; font-size:x-large; color: blue" ng-show="operatore.ruolo=='backoffice' && (dati.stato=='APERTA' || dati.stato=='IN_CARICO'  || dati.stato=='IN_LAVORAZIONE' || dati.stato=='SOSPESA') && !lista" ng-click="changeStatus('ATTESA_INFO')" title="Richiedi Info"></span>
+        	&nbsp;&nbsp;<span class="glyphicon glyphicon-ok-sign" style="cursor:pointer; font-size:x-large; color: green" ng-show="(dati.stato=='APERTA' || dati.stato=='IN_CARICO'  || dati.stato=='IN_LAVORAZIONE' || dati.stato=='SOSPESA' || dati.stato=='ATTESA_INFO') && !lista" ng-click="changeStatus('RISOLTA')" title="Risolvi"></span>
+        	&nbsp;&nbsp;<span class="glyphicon glyphicon-remove-sign" style="cursor:pointer; font-size:x-large; color: red" ng-show="(dati.stato=='APERTA' || dati.stato=='IN_CARICO'  || dati.stato=='IN_LAVORAZIONE' || dati.stato=='SOSPESA' || dati.stato=='ATTESA_INFO') && !lista" ng-click="changeStatus('CHIUSA')" title="Chiudi"></span>
+			&nbsp;&nbsp;<span class="glyphicon glyphicon-folder-open" ng-show="(dati.stato=='RISOLTA' || dati.stato=='CHIUSA')" style="cursor:pointer; font-size:x-large; color: red" title="Riapri in Lavorozione" ng-click="changeStatus('IN_LAVORAZIONE')"></span>				
+		</td>
+		
+	</tr>
+	<tr height="100%" style="vertical-align: top; height:100%">
+		<td colspan="3" width="75%">
+			<div id="accordion" role="tablist" aria-multiselectable="true">		
+				<div ng-include="'./html/historyCard.html'" ng-hide="dati.stato=='BOZZA'"></div>
+				<div ng-include="'./html/suggerimentiCard.html'"></div>
+				<div ng-include="'./html/segnalazioneCard.html'"></div>
+			</div>
+		</td>
+		<td colspan="1" width="25%" style="vertical-align:top; ">
+			<div style="vertical-align:top; height: 100%;" ng-include="'./html/suggerimenti.html'"></div>
+		</td>
+	</tr>
+</table>	
+
+
+</html>

@@ -1,0 +1,86 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>it.eng.ePizzino</groupId>
+		<artifactId>ePizzino.root</artifactId>
+		<version>1.0.0-SNAPSHOT</version>
+		<relativePath>../ePizzino.root</relativePath>
+	</parent>
+
+	<artifactId>ePizzino.biz</artifactId>
+	<name>it.eng.ePizzino.biz</name>
+	<packaging>bundle</packaging>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.apache.karaf.shell</groupId>
+			<artifactId>org.apache.karaf.shell.console</artifactId>
+		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/org.apache.aries.tx-control/tx-control-provider-jdbc-xa -->
+<dependency>
+    <groupId>org.apache.aries.tx-control</groupId>
+    <artifactId>tx-control-service-xa</artifactId>
+    <version>0.0.3</version>
+</dependency>
+		
+<dependency>
+    <groupId>org.apache.aries.tx-control</groupId>
+    <artifactId>tx-control-provider-jdbc-xa</artifactId>
+    <version>0.0.3</version>
+</dependency>
+		
+		 
+	</dependencies>
+
+	<build>
+		<plugins>
+
+			<plugin>
+				<groupId>org.apache.felix</groupId>
+				<artifactId>maven-bundle-plugin</artifactId>
+				<extensions>true</extensions>
+				<configuration>
+					<instructions>
+						<Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
+						<Bundle-Version>${project.version}</Bundle-Version>
+						<Service-Component>*</Service-Component>
+						<Bundle-Activator>it.eng.ePizzino.ebiz.internal.Activator</Bundle-Activator>
+						<!-- <Export-Package> it.html.tutorial.karaf.helloworld*;version=${project.version} 
+							</Export-Package> -->
+						<Import-Package>
+							*
+						</Import-Package>
+					</instructions>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>copy-bundles</id>
+						<phase>package</phase>
+						<goals>
+							<goal>copy</goal>
+						</goals>
+						<configuration>
+							<artifactItems>
+								<artifactItem>
+									<groupId>${project.groupId}</groupId>
+									<artifactId>${project.artifactId}</artifactId>
+									<version>${project.version}</version>
+								</artifactItem>
+							</artifactItems>
+							<outputDirectory>${deployFolder}</outputDirectory>
+							<overWriteSnapshots>true</overWriteSnapshots>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>

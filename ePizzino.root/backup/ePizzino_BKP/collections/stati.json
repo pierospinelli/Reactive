@@ -1,0 +1,40 @@
+{ 
+    "_id" : ObjectId("5a0ee0d39f59851ae4827981"), 
+    "value" : "BOZZA", 
+    "label" : "BOZZA"
+}
+{ 
+    "_id" : ObjectId("5a0ee0d39f59851ae4827982"), 
+    "value" : "SPEDITO", 
+    "label" : "SPEDITO"
+}
+{ 
+    "_id" : ObjectId("5a0ee0d39f59851ae4827983"), 
+    "value" : "IN_CARICO", 
+    "label" : "IN CARICO"
+}
+{ 
+    "_id" : ObjectId("5a0ee0d39f59851ae4827984"), 
+    "value" : "IN_LAVORAZIONE", 
+    "label" : "IN LAVORAZIONE"
+}
+{ 
+    "_id" : ObjectId("5a0ee0d39f59851ae4827985"), 
+    "value" : "ATTESA_INFO", 
+    "label" : "ATTESA INFO"
+}
+{ 
+    "_id" : ObjectId("5a0ee0d39f59851ae4827986"), 
+    "value" : "RISOLTO", 
+    "label" : "RISOLTO"
+}
+{ 
+    "_id" : ObjectId("5a0ee0d39f59851ae4827987"), 
+    "value" : "RESPINTO", 
+    "label" : "RESPINTO"
+}
+{ 
+    "_id" : ObjectId("5a0ee0d39f59851ae4827988"), 
+    "value" : "SOSPESO", 
+    "label" : "SOSPESO"
+}

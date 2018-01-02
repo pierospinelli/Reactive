@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+
+<table width="100%">
+	<tr style="background:  transparent url(./img/logoPizzino.png)">
+	
+		<th width="40%">
+			<h2><I style="font: x-large; color:red">e</I><b style="color:blue">-pizzino</b></h2>
+		</th>
+		
+		<th width="40%">
+			Operatore: {{operatore.nome}} ({{operatore.ente}})
+			<span class="glyphicon glyphicon-log-out" ng-show="operatore"
+				ng-click="logout()" style="cursor: pointer; font-size:x-large; color: red;"
+				title="Esci"></span>
+		</th>
+
+		<th width="10%">
+			<span class="glyphicon glyphicon-list-alt"
+				ng-click="showList()"
+				style="cursor: pointer; font-size:x-large; color: blue;"
+				title="elenco segnalazioni"></span> 
+		</th>
+
+		<th width="10%"></th>
+
+	</tr>
+</table>
+<hr>
+</html>

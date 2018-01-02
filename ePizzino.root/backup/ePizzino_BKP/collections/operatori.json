@@ -1,0 +1,100 @@
+{ 
+    "_id" : ObjectId("5a0f068f9f598512d45e1b2f"), 
+    "account" : "paoang", 
+    "ente" : "romacapitale", 
+    "nome" : "Paolo Angeli", 
+    "idFiscale" : "*", 
+    "pswd" : "123", 
+    "email" : "paolo.angeli@comune.roma.it", 
+    "ruolo" : "operatore"
+}
+{ 
+    "_id" : ObjectId("5a0f068f9f598512d45e1b30"), 
+    "account" : "stegio", 
+    "ente" : "romacapitale", 
+    "nome" : "Stefania Giordano", 
+    "idFiscale" : "*", 
+    "pswd" : "123", 
+    "email" : "stefania.giordano@comune.roma.it", 
+    "ruolo" : "entemanager"
+}
+{ 
+    "_id" : ObjectId("5a0f068f9f598512d45e1b31"), 
+    "account" : "rafdil", 
+    "ente" : "romacapitale", 
+    "nome" : "Raffaella Di Luzio", 
+    "idFiscale" : "*", 
+    "pswd" : "123", 
+    "email" : "rafaella.diluzio@comune.roma.it", 
+    "ruolo" : "entemanager"
+}
+{ 
+    "_id" : ObjectId("5a0f068f9f598512d45e1b32"), 
+    "account" : "piespi", 
+    "ente" : "romacapitale", 
+    "nome" : "Piergiuseppe Spinelli", 
+    "idFiscale" : "*", 
+    "pswd" : "123", 
+    "email" : "servizi.pagamenti.romacapitale@gmail.com", 
+    "ruolo" : "backoffice"
+}
+{ 
+    "_id" : ObjectId("5a0f068f9f598512d45e1b33"), 
+    "account" : "emiasc", 
+    "ente" : "romacapitale", 
+    "nome" : "Emilio Ascolese", 
+    "idFiscale" : "*", 
+    "pswd" : "123", 
+    "email" : "servizi.pagamenti.romacapitale@gmail.com", 
+    "ruolo" : "backoffice"
+}
+{ 
+    "_id" : ObjectId("5a0f068f9f598512d45e1b34"), 
+    "account" : "andcoc", 
+    "ente" : "romacapitale", 
+    "nome" : "Andrea Cocciolo", 
+    "idFiscale" : "*", 
+    "pswd" : "123", 
+    "email" : "servizi.pagamenti.romacapitale@gmail.com", 
+    "ruolo" : "backoffice"
+}
+{ 
+    "_id" : ObjectId("5a0f068f9f598512d45e1b35"), 
+    "account" : "opefiu", 
+    "ente" : "fiumicino", 
+    "nome" : "Operatore1 Fiumicino", 
+    "idFiscale" : "*", 
+    "pswd" : "123", 
+    "email" : "servizi.pagamenti.romacapitale@gmail.com", 
+    "ruolo" : "operatore"
+}
+{ 
+    "_id" : ObjectId("5a0f068f9f598512d45e1b36"), 
+    "account" : "manfiu", 
+    "ente" : "fiumicino", 
+    "nome" : "Manager1 Fiumicino", 
+    "idFiscale" : "*", 
+    "pswd" : "123", 
+    "email" : "servizi.pagamenti.romacapitale@gmail.com", 
+    "ruolo" : "entemanager"
+}
+{ 
+    "_id" : ObjectId("5a0f068f9f598512d45e1b37"), 
+    "account" : "opecap", 
+    "ente" : "caprapren", 
+    "nome" : "Operatore1 Capranica", 
+    "idFiscale" : "*", 
+    "pswd" : "123", 
+    "email" : "servizi.pagamenti.romacapitale@gmail.com", 
+    "ruolo" : "operatore"
+}
+{ 
+    "_id" : ObjectId("5a0f068f9f598512d45e1b38"), 
+    "account" : "mancap", 
+    "ente" : "caprapren", 
+    "nome" : "Manager1 Capranica", 
+    "idFiscale" : "*", 
+    "pswd" : "123", 
+    "email" : "servizi.pagamenti.romacapitale@gmail.com", 
+    "ruolo" : "entemanager"
+}

@@ -1,0 +1,141 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>it.pjsoft.reactive</groupId>
+    <artifactId>reactive.root</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <relativePath>../reactive.root</relativePath>
+  </parent>
+
+  <artifactId>reactive.ws</artifactId>
+  <name>it.pjsoft.reactive.ws</name>
+  <packaging>bundle</packaging>
+  
+  <dependencies>
+	
+		<dependency>
+			<groupId>org.apache.servicemix.specs</groupId>
+			<artifactId>org.apache.servicemix.specs.jsr339-api-2.0.1</artifactId>
+			<version>${servicemix.specs.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.apache.aries.rsa</groupId>
+			<artifactId>org.apache.aries.rsa.spi</artifactId>
+			<version>${aries.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.cxf.dosgi</groupId>
+			<artifactId>cxf-dosgi-common</artifactId>
+			<version>${dosgi.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-core</artifactId>
+			<version>${cxf.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-rt-features-logging</artifactId>
+			<version>${cxf.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>it.pjsoft.reactive</groupId>
+			<artifactId>reactive.generic</artifactId>
+		</dependency>
+
+        <dependency>
+            <groupId>org.osgi</groupId>
+            <artifactId>osgi.core</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.osgi</groupId>
+            <artifactId>osgi.cmpn</artifactId>
+            <scope>provided</scope>
+        </dependency>
+ 
+ 		<dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-frontend-jaxws</artifactId>
+            <version>${cxf.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-databinding-aegis</artifactId>
+            <version>${cxf.version}</version>
+        </dependency>
+   
+	</dependencies>
+	
+	
+
+	<build>
+		<plugins>
+
+<!-- 
+		 <plugin>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-java2ws-plugin</artifactId>
+			<version>3.2.1</version>
+			<configuration>
+	              <className>
+	                 it.pjsoft.reactive.ws.GenericSOAPService
+	              </className>
+	            </configuration>
+	            <goals>
+	              <goal>java2ws</goal>
+	            </goals>
+	      </plugin>
+ -->		
+  
+			<plugin>
+				<groupId>org.apache.felix</groupId>
+				<artifactId>maven-bundle-plugin</artifactId>
+				<extensions>true</extensions>
+				<configuration>
+					<instructions>
+						<Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
+						<Bundle-Version>${project.version}</Bundle-Version>
+						<Service-Component>*</Service-Component>
+						<Bundle-Activator>it.pjsoft.reactive.ws.internal.Activator</Bundle-Activator>
+						<!-- <Export-Package> it.html.tutorial.karaf.helloworld*;version=${project.version} 
+							</Export-Package> -->
+						<Import-Package>
+							*
+						</Import-Package>
+					</instructions>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>copy-bundles</id>
+						<phase>package</phase>
+						<goals>
+							<goal>copy</goal>
+						</goals>
+						<configuration>
+							<artifactItems>
+								<artifactItem>
+									<groupId>${project.groupId}</groupId>
+									<artifactId>${project.artifactId}</artifactId>
+									<version>${project.version}</version>
+								</artifactItem>
+							</artifactItems>
+							<outputDirectory>${deployFolder}</outputDirectory>
+							<overWriteSnapshots>true</overWriteSnapshots>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+  
+</project>

@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en" >
+<meta charset="utf-8">
+
+<div style="vertical-align: top; border: inset; height: 32em" ng-controller="suggerimentiCtrl" ng-show="hasSuggerimenti">
+	<div class="card-header">
+		<h3 class="mb-0"> Suggerimenti Proposti </h3>
+	</div>
+
+	<div ng-repeat="s in currentSuggerimenti">
+		<div>
+			<hr>
+			<span>{{s.testo}}</span>
+			<div>
+				<input name="suggerimento{{$index}}" type="button" value="OK" ng-click="addSegnalazione(s, 'OK')" />
+				&nbsp;&nbsp;&nbsp;&nbsp;<input name=suggerimento{{$index}} type="button" value="No"  ng-click="addSegnalazione(s, 'No')" />
+				&nbsp;&nbsp;&nbsp;&nbsp;<span ng-show="dati.richiedente.email">
+					<span ng-hide="isEMailInviata(s)">
+						<input name=suggerimento{{$index}} type="button"  value="Invia EMail" ng-click="inviaEMailSuggerimento(s)" />
+					</span>	
+					<span ng-show="isEMailInviata(s)" style="color: red">EMail Inviata</span>
+				</span>
+			</div>
+			<hr>
+		</div>
+	</div>
+
+</div>
+
+</html>

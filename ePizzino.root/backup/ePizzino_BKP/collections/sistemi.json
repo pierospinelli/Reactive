@@ -1,0 +1,15 @@
+{ 
+    "_id" : ObjectId("5a0ee1bb9f59851ae48279d7"), 
+    "value" : "PW", 
+    "label" : "Portale PagoWEB"
+}
+{ 
+    "_id" : ObjectId("5a0ee1bb9f59851ae48279d8"), 
+    "value" : "SA", 
+    "label" : "Sistema d'Area"
+}
+{ 
+    "_id" : ObjectId("5a0ee1bb9f59851ae48279d9"), 
+    "value" : "NA", 
+    "label" : "Altro..."
+}

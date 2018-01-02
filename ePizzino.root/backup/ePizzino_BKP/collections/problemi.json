@@ -1,0 +1,45 @@
+{ 
+    "_id" : ObjectId("5a0ee1d19f59851ae48279e2"), 
+    "value" : "NP", 
+    "label" : "Non riesco a Pagare"
+}
+{ 
+    "_id" : ObjectId("5a0ee1d19f59851ae48279e3"), 
+    "value" : "DKP", 
+    "label" : "Non so se ho Pagato"
+}
+{ 
+    "_id" : ObjectId("5a0ee1d19f59851ae48279e4"), 
+    "value" : "P2", 
+    "label" : "Ho pagato 2 volte"
+}
+{ 
+    "_id" : ObjectId("5a0ee1d19f59851ae48279e5"), 
+    "value" : "DKP2", 
+    "label" : "Non so se ho pagato 2 volte"
+}
+{ 
+    "_id" : ObjectId("5a0ee1d19f59851ae48279e6"), 
+    "value" : "EP", 
+    "label" : "Ho sbagliato a pagare"
+}
+{ 
+    "_id" : ObjectId("5a0ee1d19f59851ae48279e7"), 
+    "value" : "NR", 
+    "label" : "Non ho la ricevuta"
+}
+{ 
+    "_id" : ObjectId("5a0ee1d19f59851ae48279e8"), 
+    "value" : "CA", 
+    "label" : "Ho la ricevuta ma non il Certificato Anagrafico"
+}
+{ 
+    "_id" : ObjectId("5a0ee1d19f59851ae48279e9"), 
+    "value" : "AG", 
+    "label" : "Generica anomalia nel processo"
+}
+{ 
+    "_id" : ObjectId("5a0ee1d19f59851ae48279ea"), 
+    "value" : "NA", 
+    "label" : "Altro..."
+}

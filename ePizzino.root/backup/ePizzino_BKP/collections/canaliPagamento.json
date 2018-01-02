@@ -1,0 +1,48 @@
+{ 
+    "_id" : ObjectId("5a1140bf9f59853e3ca68806"), 
+    "id" : "PW", 
+    "type" : "WEB", 
+    "label" : "Portale dell'Ente"
+}
+{ 
+    "_id" : ObjectId("5a1140bf9f59853e3ca68807"), 
+    "id" : "HB", 
+    "type" : "WEB", 
+    "label" : "Home Banking"
+}
+{ 
+    "_id" : ObjectId("5a1140bf9f59853e3ca68808"), 
+    "id" : "POS", 
+    "type" : "Sportello", 
+    "label" : "Sportello Ente: POS Fisico"
+}
+{ 
+    "_id" : ObjectId("5a1140bf9f59853e3ca68809"), 
+    "id" : "SPI", 
+    "type" : "Sportello", 
+    "label" : "Sportello Postale"
+}
+{ 
+    "_id" : ObjectId("5a1140bf9f59853e3ca6880a"), 
+    "id" : "SB", 
+    "type" : "Sportello", 
+    "label" : "Sportello Bancario"
+}
+{ 
+    "_id" : ObjectId("5a1140bf9f59853e3ca6880b"), 
+    "id" : "SIS", 
+    "type" : "Terzi", 
+    "label" : "SISAL"
+}
+{ 
+    "_id" : ObjectId("5a1140bf9f59853e3ca6880c"), 
+    "id" : "ATM", 
+    "type" : "Terzi", 
+    "label" : "ATM (Sportello Bancomat)"
+}
+{ 
+    "_id" : ObjectId("5a1140bf9f59853e3ca6880d"), 
+    "id" : "ALT", 
+    "type" : "Terzi", 
+    "label" : "Altro Canale Terzo"
+}

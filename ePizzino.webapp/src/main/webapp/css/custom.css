@@ -1,0 +1,9 @@
+.table-hover>tbody>tr:hover>td, .table-hover>tbody>tr:hover>th {
+  background-color: #004080;
+  color:yellow;
+  font:bold;
+}
+
+div.card-header, div.card-header>.mb-0, div.card-header>.mb-0>a {
+	background: lightgray;
+}

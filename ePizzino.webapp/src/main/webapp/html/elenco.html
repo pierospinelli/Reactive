@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+
+<div ng-show="lista" >
+	<table border="0">
+			<tr>
+				<td>
+					<div class="dropdown">
+						<button class="btn btn-default dropdown-toggle" type="button"
+							id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"
+							aria-expanded="true">
+							Filtro:{{getFiltroElenco()}} <span class="caret"></span>
+						</button>
+						<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+							<li><a ng-click="setFiltroElenco()" href="#">Tutte</a></li>
+							<li><a ng-click="setFiltroElenco('BOZZE E ATTIVE')" href="#">Bozze e Attive</a></li>
+							<li><a ng-click="setFiltroElenco('BOZZE')" href="#">Solo Bozze</a></li>
+							<li><a ng-click="setFiltroElenco('ATTIVE')" href="#">Solo Attive</a></li>
+							<li><a ng-click="setFiltroElenco('CHIUSE')" href="#">Solo Chiuse</a></li>
+							<li><a ng-click="setFiltroElenco('SOSPESE')" href="#">Solo Sospese</a></li>
+							<li><hr/></li>
+							<li>Da: <input type="datetime-local" id="c3" name="c3" ng-model="dallaData" format-date
+							 class="ng-pristine ng-untouched ng-valid ng-valid-min ng-valid-max ng-valid-datetimelocal ng-valid-required"/> </li>						
+							<li>A: <input type="datetime-local" id="c3" name="c3" ng-model="allaData" format-date
+							 class="ng-pristine ng-untouched ng-valid ng-valid-min ng-valid-max ng-valid-datetimelocal ng-valid-required"/> </li>						
+						</ul>
+					</div>
+				</td>
+				<td>
+					<div ng-show="isBackOffice()" class="dropdown">
+						<button class="btn btn-default dropdown-toggle" type="button"
+							id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"
+							aria-expanded="true">
+							Ente:{{ente}} <span class="caret"></span>
+						</button>
+						<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+							<li><a ng-click="clearEnte()" href="#">Tutti</a></li>
+							<li><a ng-repeat="e in enti" ng-click="setEnte(e.codice)" href="#">{{e.nome}}</a></li>
+						</ul>
+					</div>
+					<div ng-show="isEnteManager()" class="dropdown">
+						<button class="btn btn-default dropdown-toggle" type="button"
+							id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"
+							aria-expanded="true">
+							Accesso:{{accesso}} <span class="caret"></span>
+						</button>
+						<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+							<li><a ng-click="setAccesso('ente')" href="#">Ente</a></li>
+							<li><a ng-click="setAccesso('miei')" href="#">Miei</a></li>
+						</ul>
+					</div>
+					
+				</td>
+	
+				<td>		
+					<span class="glyphicon glyphicon-plus" style="cursor:pointer; font-size:xx-large; color: green" title="Nuova Segnalazione" ng-click="nuovo();"></span>				
+				</td>
+				<td colspan="5"></td>
+			</tr>
+	</table>
+	
+	<div class="table-responsive">
+		<table width="100%" class="table table-striped table-hover">
+		 <thead>
+			<tr style="background: gray; color: white; font: large bold; ">
+				<th>ID</th>
+				<th>Creata il</th>
+				<th>Ente</th>
+				<th>Operatore</th>
+				<th>Contatto</th>
+				<th>Richiedente</th>
+				<th>Credito</th>
+				<th>Problema</th>
+				<th>Stato</th>
+				<th></th>
+			</tr>
+			</thead>
+			<tbody>
+			<tr ng-repeat="(key, value) in segnalazioni" style="cursor: pointer" ng-click="read(key)">
+				<td>{{key}}</td>
+				<td>{{value.dataCreazione | date:'dd/MM/yyyy HH:mm'}}</td>
+				<td>{{value.ente}}</td>
+				<td>{{value.operatore}}</td>
+				<td>{{value.contatto}}</td>
+				<td>{{value.richiedente}}</td>
+				<td>{{value.credito}}</td>
+				<td>{{value.problema}}</td>
+				<td>{{value.stato}}</td>
+				<td>
+					<span class="glyphicon glyphicon-edit" ng-show="value.modificato" style="color:red; font-size:xx-large;" title="Modifiche locali non condivise"></span>				
+				</td>
+			</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+</html>

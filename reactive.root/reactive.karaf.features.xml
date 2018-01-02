@@ -1,0 +1,84 @@
+<features name="it.pjsoft.reactive"
+	xmlns="http://karaf.apache.org/xmlns/features/v1.4.0" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://karaf.apache.org/xmlns/features/v1.4.0
+	 http://karaf.apache.org/xmlns/features/v1.4.0">
+
+	<repository>mvn:org.apache.cxf.karaf/apache-cxf/RELEASE/xml/features</repository>
+	<repository>mvn:org.apache.aries.rsa/rsa-features/RELEASE/xml/features</repository>
+	<repository>mvn:org.apache.cxf.dosgi/cxf-dosgi/RELEASE/xml/features</repository>
+	<repository>mvn:org.code-house.jackson/features/RELEASE/xml/features</repository>
+	<repository>mvn:org.ops4j.pax.jdbc/pax-jdbc-features/RELEASE/xml/features</repository>
+	
+	
+	<feature name="it.pjsoft.reactive.env" version="0.0.1-SNAPSHOT" install="auto" start-level="48">
+
+		<config name="it.pjsoft.reactive">
+profile.target = TEST
+#profile.target = APPLICATION
+
+profile.dbAccess = LOCAL
+#profile.dbAccess = REMOTE
+		</config>
+		
+		<feature >scheduler</feature>
+		<feature >http</feature>
+		<feature >war</feature>
+        <feature >aries-rsa-discovery-zookeeper-server</feature>
+		<feature >cxf-dosgi-provider-rs</feature>
+		<feature >cxf-dosgi-provider-ws</feature>
+		<feature >cxf-features-logging</feature>
+        <feature >cxf-rs-description-swagger2</feature>
+ 		
+ 		<feature >transaction</feature>
+ 		<!--
+ 		CONFIG: org.apache.aries.transaction.cfg
+ 		
+aries.transaction.recoverable = true
+aries.transaction.timeout = 1200
+service.pid = org.apache.aries.transaction
+org.apache.karaf.features.configKey = org.apache.aries.transaction
+aries.transaction.howl.maxBlocksPerFile = 512
+aries.transaction.howl.maxLogFiles = 2
+aries.transaction.howl.logFileDir = /opt/apache-karaf-4.0.0/data/txlog
+aries.transaction.howl.bufferSizeKBytes = 4
+ 		-->
+ 		
+ 		<feature >jdbc</feature>
+		<feature >pax-jdbc-mysql</feature>
+<!-- 		<feature >pax-jdbc-oracle</feature> -->
+ 		<!-- ESEMPIO:
+	 		jdbc:ds-create -dbName fedfismw -dn mysql -dc com.mysql.jdbc.Driver -u root -p root -url "jdbc:mysql://localhost:3306/fedfismw" fedfismw
+	 		jdbc:ds-info fedfismw
+	 		jdbc:tables fedfismw
+	 		jdbc:query fedfismw "select * from enti_creditori"
+ 		 -->
+ 		 
+ 		<feature>eclipselink</feature>
+ 		
+<!-- 		<feature>jms</feature> -->
+        <bundle  start-level="48">mvn:org.apache.aries.tx-control/tx-control-service-xa/0.0.3</bundle>
+        <bundle  start-level="48">mvn:org.apache.aries.tx-control/tx-control-provider-jdbc-xa/0.0.3</bundle>
+		
+        <bundle  start-level="48">mvn:org.webjars/swagger-ui/2.2.10-1</bundle>
+		<bundle  start-level="48">mvn:org.osgi/org.osgi.service.prefs/1.1.1</bundle>
+		<bundle  start-level="48">mvn:org.everit.osgi.bundles/org.everit.osgi.bundles.javax.servlet.api/3.1.0</bundle>
+		<bundle  start-level="48">mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.javax.mail/1.4.1_5</bundle>
+ 
+ 	</feature>
+	
+
+
+	<feature name="it.pjsoft.reactive" version="0.0.1-SNAPSHOT" start-level="49">
+
+		<feature  prerequisite="true">it.pjsoft.reactive.env</feature>
+
+		<bundle start-level="49">mvn:it.pjsoft.reactive/reactive.core/0.0.1-SNAPSHOT</bundle>
+		<bundle start-level="49">mvn:it.pjsoft.reactive/reactive.generic/0.0.1-SNAPSHOT</bundle>
+		<bundle start-level="49">mvn:it.pjsoft.reactive/reactive.rs/0.0.1-SNAPSHOT</bundle>
+		<bundle start-level="49">mvn:it.pjsoft.reactive/reactive.ws/0.0.1-SNAPSHOT</bundle>
+		<bundle start-level="49">mvn:it.pjsoft.reactive/reactive.mailer/0.0.1-SNAPSHOT</bundle>
+
+ 	</feature>
+	
+</features>

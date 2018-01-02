@@ -1,0 +1,160 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>it.pjsoft.reactive</groupId>
+	<artifactId>reactive.version.root</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	<name>it.pjsoft.reactive.version.root</name>
+
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+		<!-- <deployFolder>/KARAF/apache-karaf-4.1.1/deploy</deployFolder> -->
+		<deployFolder>/KARAF/apache-karaf-4.2.0.M1/deploy</deployFolder>
+
+		<reactive.version>0.0.1-SNAPSHOT</reactive.version>
+
+		<java.version>1.8</java.version>
+		<osgi.version>6.0.0</osgi.version>
+		<osgi.compendium.version>5.0.0</osgi.compendium.version>
+		<cxf.version>3.2.0</cxf.version>
+		<servicemix.specs.version>2.6.0</servicemix.specs.version>
+		<aries.version>1.11.0</aries.version>
+		<servlet.version>3.1</servlet.version>
+		<dosgi.version>2.3.0</dosgi.version>
+		<aQute.version>1.50.0</aQute.version>
+		<enroute.version>2.0.0</enroute.version>
+		<karaf.scheduler.version>4.1.2</karaf.scheduler.version>
+		<karaf.shell.console.version>4.0.3</karaf.shell.console.version>
+		<service.prefs>1.1.1</service.prefs>
+
+		<mongodb-driver>3.6.1</mongodb-driver>
+		<maven.bundle.plugin.version>3.3.0</maven.bundle.plugin.version>
+		<maven-resources-plugin.version>3.0.2</maven-resources-plugin.version>
+		
+		<transaction.version>2.0.0</transaction.version>
+		<transaction-api.version>1.2</transaction-api.version>
+		<jdbc.version>1.2.1</jdbc.version>
+		<eclipselink.version>2.6.4</eclipselink.version>
+
+
+		<!-- <felix.version>5.6.8</felix.version> -->
+		<!-- <aries.rsa.version>1.11.0</aries.rsa.version> -->
+		<!-- <log4j-version>1.2.16</log4j-version> -->
+		<!-- <zookeeper.version>3.4.8</zookeeper.version> -->
+		<!-- <slf4j.version>1.7.14</slf4j.version> -->
+		<!-- <exam.version>4.11.0</exam.version> -->
+
+
+		<baseline.skip>true</baseline.skip>
+
+		<topDirectoryLocation>..</topDirectoryLocation>
+
+	</properties>
+
+	<dependencyManagement>
+		<dependencies>
+
+			<dependency>
+				<groupId>org.osgi</groupId>
+				<artifactId>osgi.core</artifactId>
+				<version>${osgi.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.osgi</groupId>
+				<artifactId>osgi.cmpn</artifactId>
+				<version>${osgi.compendium.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>biz.aQute</groupId>
+				<artifactId>bndlib</artifactId>
+				<version>${aQute.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.osgi</groupId>
+				<artifactId>osgi.enroute.base.api</artifactId>
+				<version>${enroute.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.osgi</groupId>
+				<artifactId>org.osgi.service.prefs</artifactId>
+				<version>${service.prefs}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.apache.karaf.shell</groupId>
+				<artifactId>org.apache.karaf.shell.console</artifactId>
+				<version>${karaf.shell.console.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.apache.karaf.scheduler</groupId>
+				<artifactId>org.apache.karaf.scheduler.core</artifactId>
+				<version>${karaf.scheduler.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.mongodb</groupId>
+				<artifactId>mongo-java-driver</artifactId>
+				<version>${mongodb-driver}</version>
+			</dependency>
+
+	        <dependency>
+	            <groupId>javax.transaction</groupId>
+	            <artifactId>javax.transaction-api</artifactId>
+	            <version>${transaction-api.version}</version>
+	        </dependency>
+
+			<dependency>
+				<groupId>it.pjsoft.reactive</groupId>
+				<artifactId>reactive.core</artifactId>
+				<version>${reactive.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>it.pjsoft.reactive</groupId>
+				<artifactId>reactive.generic</artifactId>
+				<version>${reactive.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>it.pjsoft.reactive</groupId>
+				<artifactId>reactive.rs</artifactId>
+				<version>${reactive.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>it.pjsoft.reactive</groupId>
+				<artifactId>reactive.mailer</artifactId>
+				<version>${reactive.version}</version>
+			</dependency>
+
+		</dependencies>
+	</dependencyManagement>
+
+	<build>
+		<pluginManagement>
+			<plugins>
+
+				<plugin>
+					<groupId>org.apache.felix</groupId>
+					<artifactId>maven-bundle-plugin</artifactId>
+					<version>${maven.bundle.plugin.version}</version>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-resources-plugin</artifactId>
+					<version>${maven-resources-plugin.version}</version>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+
+</project>

@@ -1,0 +1,25 @@
+{ 
+    "_id" : ObjectId("5a0f016c9f59852098b1bbd4"), 
+    "value" : "T", 
+    "label" : "Telefono"
+}
+{ 
+    "_id" : ObjectId("5a0f016c9f59852098b1bbd5"), 
+    "value" : "S", 
+    "label" : "Sportello"
+}
+{ 
+    "_id" : ObjectId("5a0f016c9f59852098b1bbd6"), 
+    "value" : "M", 
+    "label" : "Mail"
+}
+{ 
+    "_id" : ObjectId("5a0f016c9f59852098b1bbd7"), 
+    "value" : "0", 
+    "label" : "060606"
+}
+{ 
+    "_id" : ObjectId("5a0f016c9f59852098b1bbd8"), 
+    "value" : "W", 
+    "label" : "WEB Form"
+}

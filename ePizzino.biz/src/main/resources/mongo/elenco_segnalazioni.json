@@ -1,0 +1,100 @@
+{
+"query": [
+		
+	{
+		"$sort": {
+			"dataCreazione": -1
+		}
+	},
+	
+		
+	{
+		"$lookup": {
+		    "from" : "enti",
+		    "localField" : "ente",
+		    "foreignField" : "codice",
+		    "as" : "ente"
+		}
+	},
+
+	{
+		"$unwind": {"path": "$ente", "preserveNullAndEmptyArrays": true}
+	},
+	
+	{
+		"$lookup": {
+		    "from" : "operatori",
+		    "localField" : "mittente.account",
+		    "foreignField" : "account",
+		    "as" : "operatore"
+		}
+	},
+
+	{
+		"$unwind": {"path": "$operatore", "preserveNullAndEmptyArrays": true}
+	},
+	
+	{
+		"$lookup": {
+		    "from": "contatti",
+		    "localField": "contatto.canale",
+		    "foreignField": "value",
+		    "as": "contatto"
+		}
+	},
+
+	{
+		"$unwind": {"path": "$contatto", "preserveNullAndEmptyArrays": true}
+	},
+
+	{
+		"$lookup": {
+		    "from": "crediti",
+		    "localField": "pagamento.credito",
+		    "foreignField": "value",
+		    "as": "credito"
+		}
+	},
+
+	{
+		"$unwind": {"path": "$credito", "preserveNullAndEmptyArrays": true}
+	},
+
+	{
+		"$lookup": {
+		    "from": "problemi",
+		    "localField": "segnalazione.tipo",
+		    "foreignField": "value",
+		    "as": "problema"
+		}
+	},
+
+	{
+		"$unwind": {"path": "$problema", "preserveNullAndEmptyArrays": true}
+	},
+
+	{
+		"$project": {
+		   	"_id": 1,
+		    "dataCreazione": 1,
+		    "ente": "$ente.nome",
+		    "operatore": "$operatore.nome",
+		    "cod_operatore": "$operatore.account",
+		    "contatto": "$contatto.label",
+		    "richiedente": "$richiedente.denominazione",
+		    "credito": "$credito.label",
+		    "problema" : { "$cond" : { "if" : "$problema.label", "then" : "$problema.label", "else" : "Altro..." } },
+		    "stato": 1,
+		    "modificato": 1
+		}
+	}
+	
+]}
+
+
+
+
+
+
+
+

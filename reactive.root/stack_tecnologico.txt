@@ -1,0 +1,219 @@
+KARAF (felix)
+iPojo /(SCR?) / o R6 Declarative Services?
+enRoute?
+CXF
+SWAGGER
+DOSGI
+
+Arie RSA
+Zookeeper bundle
+Jackson
+Apache MINA
+
+Eclipse/BND Tools
+
+ZooKeeper / Cellar / ...
+
+feature:install scr
+
+------------------------------------------------
+Per il core:
+
+feature:install scheduler
+install mvn:org.osgi/org.osgi.service.prefs/1.1.1
+
+Per i servizi rest:
+repo-add cxf
+feature:install cxf http
+feature:install cxf-rs-description-swagger2
+repo-add aries-rsa 
+repo-add cxf-dosgi
+feature:install cxf-dosgi-provider-rs
+
+feature:repo-add mvn:org.code-house.jackson/features/<jackson-version>/xml/features
+feature:install jackson-core
+
+e SOAP:
+feature:install cxf-dosgi-provider-ws
+feature:install aries-rsa-discovery-zookeeper-server
+
+forse:
+install mvn:org.apache.geronimo.specs/geronimo-servlet_3.0_spec/1.0
+o
+install mvn:org.everit.osgi.bundles/org.everit.osgi.bundles.javax.servlet.api/3.1.0
+
+Per reactive.mailer
+install mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.javax.mail/1.4.1_5
+
+Per MongoDB:
+install mvn:org.mongodb/mongo-java-driver/3.6.0.SNAPSHOT
+
+
+Per i le applicazioni web
+feature:install war
+re
+___________________________________________
+Note:
+Le Preferences hanno le seguenti differenze dalla specifica standard:
+- Sono supportate solo le system e non le user (almeno per ora)
+- Le system sono scrivibili solo dal codice a livello system di reactive (da fare)
+- Sono accesibili tramite i metodi statici di ReactiveConfig
+
+- Lo standard per gli eventi è stato leggermente modificato:
+    - Ai metodi standard sono stati aggiunti metodi (in ReactiveConfig) per registrarsi 
+    su un path piuttasto che su un nodo, in modo da potersi registrare anche su nodi ancora
+    non esistenti
+    - Gli eventi di creazione/cancellazione nodo arrivano anche ai listener registrati sul path del
+    nodo stesso, oltre che sul nodo padre
+    - Lo stesso evento viene inviato un'unica volta allo stesso listener anche se registrato sia 
+    sul padre che sul figlio
+
+	 - Vengono implementati nodi "trasparenti" condizionati dai profili attivi. Ogni nodo con nome iniziante
+	 col carattere '#' viene confrontato coi profili attivi, se non esiste un profilo con lo stesso nome, il 
+	 nodo ed i suoi discendenti non vengono montati nell'albero delle Preferences; Se il profilo esiste, le 
+	 proprietà ed i discendenti del nodo trasparente vengono montati sul suo nodo parent 
+
+ 	- La modifica a run time dei profili è possibile, anche se non consigliata, e provoca il ricaricamento
+ 	di tutte le preferences, con conseguente invio delle notifiche ai vari listener
+
+ 	- PROBLEMA NOTO: In caso di reload del bundle core di reactive, al momento non vengono conservate le
+ 	registrazioni dei listener e, quindi, è necessario eseguire il reload delle applicazioni
+
+	- I profili sono registrati nel file it.pjsoft.reactive.cfg sotto la directory etc di Karaf.
+	Il nome della proprietà è solo documentativo. Solo il valore è utilizzato come profilo attivo
+ 
+Installed bundles:
+ 20 | Active |  80 | 4.2.0.M1                | mvn:org.apache.karaf/org.apache.karaf.event/4.2.0.M1
+ 40 | Active |  80 | 0.0.0                   | feature:file:/C:/KARAF/apache-karaf-4.2.0.M1/deploy/reactive.karaf.features.xml
+ 45 | Active |  80 | 2.9.1                   | wrap:mvn:com.fasterxml.jackson.jaxrs/...
+ 46 | Active |  80 | 2.9.1                   | wrap:mvn:com.fasterxml.jackson.jaxrs/...
+ 57 | Active |  80 | 1.2.0                   | mvn:javax.enterprise/cdi-api/1.2
+ 58 | Active |  80 | 1.2                     | mvn:javax.interceptor/javax.interceptor-api/1.2
+ 59 | Active |  80 | 2.1.0.v201304241213     | mvn:org.eclipse.persistence/javax.persistence/2.1.0
+ 60 | Active |  80 | 1.2                     | mvn:javax.transaction/javax.transaction-api/1.2
+ 63 | Active |  80 | 2.6.1                   | mvn:org.apache.aries.jpa/org.apache.aries.jpa.eclipselink.adapter/2.6.1
+ 64 | Active |  80 | 1.11.0                  | mvn:org.apache.aries.rsa/org.apache.aries.rsa.core/1.11.0
+ 65 | Active |  80 | 1.11.0                  | mvn:org.apache.aries.rsa.discovery/org.apache.aries.rsa.discovery.command/1.11.0
+ 66 | Active |  80 | 1.11.0                  | mvn:org.apache.aries.rsa.discovery/org.apache.aries.rsa.discovery.local/1.11.0
+ 67 | Active |  80 | 1.11.0                  | mvn:org.apache.aries.rsa.discovery/org.apache.aries.rsa.discovery.zookeeper/1.11.0
+ 68 | Active |  80 | 1.11.0                  | mvn:org.apache.aries.rsa/org.apache.aries.rsa.eapub/1.11.0
+ 69 | Active |  80 | 1.11.0                  | mvn:org.apache.aries.rsa/org.apache.aries.rsa.spi/1.11.0
+ 70 | Active |  80 | 1.11.0                  | mvn:org.apache.aries.rsa/org.apache.aries.rsa.topology-manager/1.11.0
+ 92 | Active |  80 | 2.3.0                   | mvn:org.apache.cxf.dosgi/cxf-dosgi-common/2.3.0
+ 93 | Active |  80 | 2.3.0                   | mvn:org.apache.cxf.dosgi/cxf-dosgi-decorator/2.3.0
+ 94 | Active |  80 | 2.3.0                   | mvn:org.apache.cxf.dosgi/cxf-dosgi-provider-rs/2.3.0
+ 95 | Active |  80 | 2.3.0                   | mvn:org.apache.cxf.dosgi/cxf-dosgi-provider-ws/2.3.0
+100 | Active |  80 | 3.4.10                  | mvn:org.apache.zookeeper/zookeeper/3.4.10
+107 | Active |  80 | 1.0.0.2                 | mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.javax-inject/1_2
+108 | Active |  48 | 1.4.1.5                 | mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.javax.mail/1.4.1_5
+173 | Active |  80 | 3.2.0.v201302191141     | mvn:org.eclipse.persistence/org.eclipse.persistence.antlr/2.6.4
+174 | Active |  80 | 5.0.1.v201405080102     | mvn:org.eclipse.persistence/org.eclipse.persistence.asm/2.6.4
+175 | Active |  80 | 2.6.4.v20160829-44060b6 | mvn:org.eclipse.persistence/org.eclipse.persistence.core/2.6.4
+176 | Active |  80 | 2.6.4.v20160829-44060b6 | mvn:org.eclipse.persistence/org.eclipse.persistence.jpa/2.6.4
+177 | Active |  80 | 2.6.4.v20160829-44060b6 | mvn:org.eclipse.persistence/org.eclipse.persistence.jpa.jpql/2.6.4
+178 | Active |  48 | 3.1.0                   | mvn:org.everit.osgi.bundles/org.everit.osgi.bundles.javax.servlet.api/3.1.0
+181 | Active |  80 | 0.2.0                   | mvn:org.ops4j.pax.transx/pax-transx-tm-api/0.2.0
+182 | Active |  80 | 0.2.0                   | mvn:org.ops4j.pax.transx/pax-transx-tm-geronimo/0.2.0
+193 | Active |  48 | 1.1.1.201505202023      | mvn:org.osgi/org.osgi.service.prefs/1.1.1
+194 | Active |  48 | 2.2.10.1                | mvn:org.webjars/swagger-ui/2.2.10-1
+197 | Active |  48 | 0.0.3                   | mvn:org.apache.aries.tx-control/tx-control-provider-jdbc-xa/0.0.3
+198 | Active |  48 | 0.0.3                   | mvn:org.apache.aries.tx-control/tx-control-service-xa/0.0.3
+199 | Active |  49 | 0.0.1.SNAPSHOT          | mvn:it.pjsoft.reactive/reactive.core/0.0.1-SNAPSHOT
+200 | Active |  49 | 0.0.1.SNAPSHOT          | mvn:it.pjsoft.reactive/reactive.generic/0.0.1-SNAPSHOT
+201 | Active |  49 | 0.0.1.SNAPSHOT          | mvn:it.pjsoft.reactive/reactive.mailer/0.0.1-SNAPSHOT
+202 | Active |  49 | 0.0.1.SNAPSHOT          | mvn:it.pjsoft.reactive/reactive.rs/0.0.1-SNAPSHOT
+203 | Active |  49 | 0.0.1.SNAPSHOT          | mvn:it.pjsoft.reactive/reactive.ws/0.0.1-SNAPSHOT
+204 | Active |  80 | 1.9.2.1                 | mvn:org.apache.servicemix.bundles/org.apache.servicemix.bundles.jasypt/1.9.2_1
+205 | Active |  80 | 1.2.1                   | mvn:org.ops4j.pax.jdbc/pax-jdbc/1.2.1
+206 | Active |  80 | 1.2.1                   | mvn:org.ops4j.pax.jdbc/pax-jdbc-config/1.2.1
+207 | Active |  80 | 1.2.1                   | mvn:org.ops4j.pax.jdbc/pax-jdbc-pool-common/1.2.1
+208 | Active |  80 | 1.0.0.201505202023      | mvn:org.osgi/org.osgi.service.jdbc/1.0.0
+209 | Active |  80 | 4.2.0.M1                | mvn:org.apache.karaf.jdbc/org.apache.karaf.jdbc.core/4.2.0.M1
+210 | Active |  80 | 5.1.34                  | mvn:mysql/mysql-connector-java/5.1.34
+211 | Active |  80 | 1.2.1                   | mvn:org.ops4j.pax.jdbc/pax-jdbc-mysql/1.2.1
+212 | Active |  80 | 3.6.1                   | mvn:org.mongodb/mongo-java-driver/3.6.1
+213 | Active |  80 | 1.0.0.SNAPSHOT          | file:/C:/KARAF/apache-karaf-4.2.0.M1/deploy/ePizzino.config-1.0.0-SNAPSHOT.jar
+215 | Active |  80 | 1.0.0.SNAPSHOT          | file:/C:/KARAF/apache-karaf-4.2.0.M1/deploy/ePizzino.webapp-1.0.0-SNAPSHOT.war
+216 | Active |  80 | 1.0.0.SNAPSHOT          | file:/C:/KARAF/apache-karaf-4.2.0.M1/deploy/ePizzino.biz-1.0.0-SNAPSHOT.jar
+218 | Active |  80 | 2.0.0                   | mvn:org.apache.geronimo.specs/geronimo-j2ee-connector_1.5_spec/2.0.0
+219 | Active |  80 | 1.1.1                   | mvn:org.apache.geronimo.specs/geronimo-jms_1.1_spec/1.1.1
+220 | Active |  80 | 1.1.1                   | mvn:org.apache.geronimo.specs/geronimo-jta_1.1_spec/1.1.1
+221 | Active |  80 | 4.0.5                   | mvn:com.atomikos/transactions-osgi
+
+Started Features:
+Name                                 | Version          | Required | State   | Repository               | Description
+-------------------------------------+------------------+----------+---------+--------------------------+--------------------------------------------------
+pax-transx-tm-api                    | 0.2.0            |          | Started | pax-transx-0.2.0         |
+pax-transx-tm-geronimo               | 0.2.0            |          | Started | pax-transx-0.2.0         |
+cxf-dosgi-common                     | 2.3.0            |          | Started | cxf-dosgi-2.3.0          |
+cxf-dosgi-provider-ws                | 2.3.0            |          | Started | cxf-dosgi-2.3.0          |
+cxf-dosgi-provider-rs                | 2.3.0            |          | Started | cxf-dosgi-2.3.0          |
+it.pjsoft.reactive.env               | 0.0.1.SNAPSHOT   | x        | Started | it.pjsoft.reactive       |
+it.pjsoft.reactive                   | 0.0.1.SNAPSHOT   | x        | Started | it.pjsoft.reactive       |
+feature                              | 4.2.0.M1         | x        | Started | standard-4.2.0.M1        | Features Support
+shell                                | 4.2.0.M1         | x        | Started | standard-4.2.0.M1        | Karaf Shell
+deployer                             | 4.2.0.M1         | x        | Started | standard-4.2.0.M1        | Karaf Deployer
+bundle                               | 4.2.0.M1         | x        | Started | standard-4.2.0.M1        | Provide Bundle support
+config                               | 4.2.0.M1         | x        | Started | standard-4.2.0.M1        | Provide OSGi ConfigAdmin support
+diagnostic                           | 4.2.0.M1         | x        | Started | standard-4.2.0.M1        | Provide Diagnostic support
+instance                             | 4.2.0.M1         | x        | Started | standard-4.2.0.M1        | Provide Instance support
+jaas                                 | 4.2.0.M1         | x        | Started | standard-4.2.0.M1        | Provide JAAS support
+log                                  | 4.2.0.M1         | x        | Started | standard-4.2.0.M1        | Provide Log support
+package                              | 4.2.0.M1         | x        | Started | standard-4.2.0.M1        | Package commands and mbeans
+service                              | 4.2.0.M1         | x        | Started | standard-4.2.0.M1        | Provide Service support
+system                               | 4.2.0.M1         | x        | Started | standard-4.2.0.M1        | Provide System support
+http                                 | 4.2.0.M1         |          | Started | standard-4.2.0.M1        | Implementation of the OSGI HTTP Service
+pax-http-service                     | 6.0.7            |          | Started | standard-4.2.0.M1        | Pax-Web OSGi HTTP Service
+war                                  | 4.2.0.M1         |          | Started | standard-4.2.0.M1        | Turn Karaf as a full WebContainer
+jetty                                | 9.3.15.v20161220 |          | Started | standard-4.2.0.M1        |
+kar                                  | 4.2.0.M1         | x        | Started | standard-4.2.0.M1        | Provide KAR (KARaf archive) support
+ssh                                  | 4.2.0.M1         | x        | Started | standard-4.2.0.M1        | Provide a SSHd server on Karaf
+management                           | 4.2.0.M1         | x        | Started | standard-4.2.0.M1        | Provide a JMX MBeanServer and a set of MBeans in
+scheduler                            | 4.2.0.M1         |          | Started | standard-4.2.0.M1        | Provide a scheduler service in Karaf to fire even
+eventadmin                           | 4.2.0.M1         | x        | Started | standard-4.2.0.M1        | OSGi Event Admin service specification for event-
+scr                                  | 4.2.0.M1         |          | Started | standard-4.2.0.M1        | Declarative Service support
+wrap                                 | 2.5.3            | x        | Started | standard-4.2.0.M1        | Wrap URL handler
+pax-jetty                            | 9.3.14.v20161028 |          | Started | org.ops4j.pax.web-6.0.7  | Provide Jetty engine support
+pax-http-jetty                       | 6.0.7            |          | Started | org.ops4j.pax.web-6.0.7  |
+pax-http                             | 6.0.7            |          | Started | org.ops4j.pax.web-6.0.7  | Implementation of the OSGI HTTP Service
+pax-http-whiteboard                  | 6.0.7            |          | Started | org.ops4j.pax.web-6.0.7  | Provide HTTP Whiteboard pattern support
+pax-war                              | 6.0.7            |          | Started | org.ops4j.pax.web-6.0.7  | Provide support of a full WebContainer
+cxf-specs                            | 3.2.1            |          | Started | cxf-3.2.1                |
+cxf-core                             | 3.2.1            |          | Started | cxf-3.2.1                |
+cxf-commands                         | 3.2.1            |          | Started | cxf-3.2.1                |
+cxf-wsdl                             | 3.2.1            |          | Started | cxf-3.2.1                |
+cxf-http                             | 3.2.1            |          | Started | cxf-3.2.1                |
+cxf-http-jetty                       | 3.2.1            |          | Started | cxf-3.2.1                |
+cxf-bindings-soap                    | 3.2.1            |          | Started | cxf-3.2.1                |
+cxf-jaxws                            | 3.2.1            |          | Started | cxf-3.2.1                |
+cxf-jaxrs                            | 3.2.1            |          | Started | cxf-3.2.1                |
+cxf-jackson                          | 3.2.1            |          | Started | cxf-3.2.1                |
+cxf-rs-description-swagger2          | 3.2.1            |          | Started | cxf-3.2.1                |
+cxf-databinding-aegis                | 3.2.1            |          | Started | cxf-3.2.1                |
+cxf-databinding-jaxb                 | 3.2.1            |          | Started | cxf-3.2.1                |
+cxf-features-logging                 | 3.2.1            |          | Started | cxf-3.2.1                |
+pax-jdbc-spec                        | 1.2.1            |          | Started | org.ops4j.pax.jdbc-1.2.1 | Provides OSGi JDBC Service spec
+pax-jdbc                             | 1.2.1            |          | Started | org.ops4j.pax.jdbc-1.2.1 | Provides JDBC Service support
+pax-jdbc-config                      | 1.2.1            |          | Started | org.ops4j.pax.jdbc-1.2.1 | Provides JDBC Config support
+pax-jdbc-mysql                       | 1.2.1            | x        | Started | org.ops4j.pax.jdbc-1.2.1 | Provides JDBC MySQL DataSourceFactory
+aries-rsa-core                       | 1.11.0           |          | Started | aries-rsa-1.11.0         |
+aries-rsa-discovery-zookeeper        | 1.11.0           |          | Started | aries-rsa-1.11.0         |
+aries-rsa-discovery-zookeeper-server | 1.11.0           |          | Started | aries-rsa-1.11.0         |
+aries-rsa-core                       | 1.11.0           |          | Started | aries-rsa-1.11.0         |
+aries-rsa-discovery-zookeeper        | 1.11.0           |          | Started | aries-rsa-1.11.0         |
+aries-rsa-discovery-zookeeper-server | 1.11.0           |          | Started | aries-rsa-1.11.0         |
+transaction-api                      | 1.2.0            |          | Started | enterprise-4.2.0.M1      |
+transaction-manager-geronimo         | 3.1.3            |          | Started | enterprise-4.2.0.M1      | Geronimo Transaction Manager
+transaction                          | 2.0.0            |          | Started | enterprise-4.2.0.M1      | OSGi Transaction Manager
+eclipselink                          | 2.6.4            |          | Started | enterprise-4.2.0.M1      | Eclipselink JPA persistence engine support
+jdbc                                 | 4.2.0.M1         | x        | Started | enterprise-4.2.0.M1      | JDBC service and commands
+
+___________________________________________
+Docs:
+https://blog.osoco.de/2015/08/osgi-components-simply-simple-part-i/
+https://blog.osoco.de/2015/08/osgi-components-simply-simple-part-ii/
+https://blog.osoco.de/2015/11/osgi-components-simply-simple-part-iii/
+https://blog.osoco.de/2016/05/migrating-from-the-apache-felix-scr-annotations-to-the-osgi-declarative-services-annotations/
+https://www.slideshare.net/carlo.bonamico/angularjs-security-defend-your-single-page-application
+https://www.slideshare.net/carlo.bonamico/web-application-security-reloaded-for-the-html5-era
+https://www.dontesta.it/2017/03/02/come-abilitare-https-apache-karaf-pax-web/

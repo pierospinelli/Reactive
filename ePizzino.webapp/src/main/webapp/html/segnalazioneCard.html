@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+
+<div class="card" ng-controller="segnalazioneCtrl">
+	<div class="card-header" role="tab" id="headingOne">
+		<h3 class="mb-0">
+			<a data-toggle="collapse" data-parent="#accordion"
+				href="#Segnalazione" aria-expanded="true"
+				aria-controls="collapseOne"> Dati Segnalazione </a> 
+				<span class="glyphicon glyphicon-check" ng-show="isComplete()" style="font-size: normal; color:green;" title="Dati Sufficienti" ></span>				
+		</h3>
+	</div>
+	
+
+
+	<div id="Segnalazione" class="collapse" role="tabpanel" aria-labelledby="headingThree">
+
+		<div class="container">
+		
+			<fieldset id="contatto" >
+				<legend>Contatto</legend>
+				
+				<div class="form-group row">
+					<label class="form-control-label col-sm-2">Canale Segnalazione</label>
+					<div class="col-sm-2">
+						<select id="c1" ng-model="dati.contatto.canale">
+							<option ng-repeat="c in contatti" value="{{c.value}}">{{c.label}}</option>
+						</select> 
+					</div>
+					<label class="form-control-label col-sm-2">Data/Ora Segnalazione</label>
+					<div class="col-sm-2">
+						<input type="datetime-local" id="c3" name="c3" ng-model="dati.contatto.data" format-date
+							 class="ng-pristine ng-untouched ng-valid ng-valid-min ng-valid-max ng-valid-datetimelocal ng-valid-required"/> 
+					</div>
+					<label class="form-control-label col-sm-2" ng-show="dati.stato=='BOZZA' && dati.mittente.ruolo=='backoffice'">Per l'Ente</label>
+					<div class="col-sm-2" ng-show="dati.stato=='BOZZA' && dati.mittente.ruolo=='backoffice'">
+						<select ng-model="dati.ente">
+							<option ng-repeat="e in enti" value="{{e.codice}}">{{e.nome}}</option>
+						</select>
+					</div>
+				</div>
+				
+				<div class="form-group row">
+					<label class="form-control-label col-sm-2">Nome Segnalante</label>
+					<div class="col-sm-2">
+						<input type="text" id="u1" ng-model="dati.richiedente.denominazione" required />
+					</div>
+					<label class="form-control-label col-sm-2">Telefono</label>
+					<div class="col-sm-2">
+						<input type="text" id="u3" ng-model="dati.richiedente.telefono" /> 
+					</div>
+					<label class="form-control-label col-sm-2">eMail</label>
+					<div class="col-sm-2">
+						<input type="text" id="u2" ng-model="dati.richiedente.email" />
+					</div>
+				</div>
+
+				<div class="form-group row" ng-show="dati.contatto.canale=='M' || dati.contatto.canale=='0'">
+					<label class="form-control-label col-sm-2">Testo eMail</label>
+					<div class="col-sm-2">
+						<span class="glyphicon glyphicon-envelope" ng-show="dati.contatto.testo && !openEmail" style="cursor:pointer;font-size:xx-large; color: green;" title="Apri Testo EMail" ng-click="toggleEmail()" ></span>
+						<span class="glyphicon glyphicon-envelope" ng-show="(!dati.contatto.testo) && (!openEmail)" style="cursor:pointer;font-size:xx-large; color: red;" title="Copia Testo EMail" ng-click="toggleEmail()" ></span>
+						<span class="glyphicon glyphicon-envelope" ng-show="openEmail" src="./img/emailOpen.png" style="cursor:pointer;font-size:xx-large;"  title="Chiudi Testo EMail" ng-click="toggleEmail()" ></span>
+					</div>
+					
+					<textarea  class="form-control-label col-sm-8" ng-show="openEmail" cols="120" rows="10" id="c2" ng-model="dati.contatto.testo" on="toggleEmail()"></textarea>
+					
+				</div>
+				
+			</fieldset>
+
+		</div>
+
+
+		
+		
+		<div class="container">
+		
+			<fieldset id="tipoSegnalazione" >
+				<legend>Tipo Segnalazione</legend>
+				
+				<div class="form-group row">
+					<label class="form-control-label col-sm-2">Tipo Segnalazione</label>
+					<div class="col-sm-4">
+						<select id="s1" ng-model="dati.segnalazione.tipo" ng-change="onChangeProblema()">
+							<option ng-repeat="c in problemi" value="{{c.value}}">{{c.label}}</option>
+							<option value="NA">Altro...</option>
+						</select> 
+					</div>
+					<label class="form-control-label col-sm-2">Canale Pagamento</label>
+					<div class="col-sm-4">
+						<select id="s2" ng-model="dati.segnalazione.canale">
+							<optgroup ng-repeat="(key,value) in canaliPagamento" label="{{key}}">
+								<option ng-repeat="r in value" value="{{r.id}}">{{r.label}}</option>
+							</optgroup>
+							<option value="VARI">Vari...</option>
+							<option value="NA">Altro...</option>
+						</select>
+					</div>
+				</div>
+				
+				<div class="form-group row" ng-show="dati.segnalazione.canale=='PW'">
+					<label class="form-control-label col-sm-2">Autenticazione</label>
+					<div class="col-sm-2">
+						<select id="pw1" ng-model="dati.segnalazione.autenticazione">
+							<option value="NP">Anonimo</option>
+							<option value="PF">Persona Fisica</option>
+							<option value="PG">Persona Giuridica</option>
+						</select>
+					</div>
+					<label class="form-control-label col-sm-2">Applicazione di Ingresso</label>
+					<div class="col-sm-2">
+						<select id="pw5" ng-model="dati.segnalazione.applicazione">
+							<option ng-repeat="c in sistemi" value="{{c.value}}">{{c.label}}</option>
+						</select>
+					</div>
+					<label class="form-control-label col-sm-2"  ng-show="dati.segnalazione.applicazione=='NA'">Specifica Applicazione</label>
+					<div class="col-sm-2"  ng-show="dati.segnalazione.applicazione=='NA'">
+			 			<input type="text" id="pw6" ng-model="dati.segnalazione.applicazioneSpec"></input>
+					</div>
+				</div>
+
+				<div class="form-group row" ng-show="dati.segnalazione.autenticazione=='PG' || dati.segnalazione.autenticazione=='PF'">
+					<label class="form-control-label col-sm-2">Nome Utente Pagante</label>
+					<div class="col-sm-2">
+						<input type="text" id="pw3" ng-model="dati.segnalazione.nomeUtente"></input>
+					</div>
+					<label class="form-control-label col-sm-2">ID Fiscale Utente Pagante</label>
+					<div class="col-sm-2">
+						<input type="text" id="pw4" ng-model="dati.segnalazione.autenticazioneLogin"></input>
+					</div>
+				</div>
+
+
+				<div class="form-group row" ng-show="dati.segnalazione.canale!='PW'">
+					<label class="form-control-label col-sm-2">Avvisatura</label>
+					<div class="col-sm-2">
+						<select id="npw1"
+							ng-model="dati.segnalazione.avvisatura">
+							<option value="PO">Posta Ordinaria</option>
+							<option value="PDF">PDF</option>
+							<option value="NA">Altro...</option>
+						</select>
+					</div>
+					<label class="form-control-label col-sm-2" ng-show="dati.segnalazione.avvisatura=='NA'">Altra avvisatura</label>
+					<div class="col-sm-2" ng-show="dati.segnalazione.avvisatura=='NA'">
+						<input type="text" id="npw2" ng-model="dati.segnalazione.altaAvvisatura"></input>
+					</div>
+				</div>
+
+				
+				<div class="form-group row" ng-show="dati.segnalazione.canale=='HB'">
+						<hr>TODO
+				</div>
+
+				
+			</fieldset>
+
+		</div>
+				
+				
+				
+	
+
+
+
+		<div class="container">
+		
+			<fieldset id="pagamento" >
+				<legend>Pagamento</legend>
+				
+				<div class="form-group row">
+					<label class="form-control-label col-sm-2">Data/Ora Pagamento</label>
+					<div class="col-sm-4">
+						<input type="datetime-local" id="c3" name="c3" ng-model="dati.pagamento.data"  format-date
+							placeholder="dd/MM/yyyy HH:mm" min="01/01/2017 00:00" max="21/12/2100 59:59"/> 
+						<select id="p2" ng-model="dati.pagamento.dataPM">
+							<option value="0">Esatta</option>
+							<option value="30M">+/-30 min.</option>
+							<option value="1H">+/-1 ora</option>
+							<option value="3H">+/-2 ore</option>
+							<option value="5H">+/-6 ore</option>
+							<option value="12H">+/-12 ore</option>
+							<option value="1D">+/-1 Giorno</option>
+							<option value="2D">+/-2 2 Giorni</option>
+							<option value="3D">+/-3 Giorni</option>
+						</select>
+					</div>
+					<label class="form-control-label col-sm-2">Num. Ricevuta</label>
+					<div class="col-sm-2">
+						<input type="text" id="p6" ng-model="dati.pagamento.ricevuta">
+					</div>
+					<div class="col-sm-2">
+						<span class="glyphicon glyphicon-info-sign" style="cursor:pointer; font-size:xx-large;" title="Richiedi informazioni sul Pagamento" ng-click="findInfoPagamento()" ></span>	
+					</div>
+				</div>
+	
+				<div class="form-group row">
+					<label class="form-control-label col-sm-2">Tributo/Onere</label>
+					<div class="col-sm-2">
+						<select id="pw3" ng-model="dati.pagamento.credito">
+							<option ng-repeat="c in crediti" value="{{c.value}}">{{c.label}}</option>
+						</select>
+					</div>
+					<label class="form-control-label col-sm-2">Nome Debitore</label>
+					<div class="col-sm-2">
+						<input type="text" id="p5" ng-model="dati.pagamento.nomeDebitore">
+					</div>
+					<label class="form-control-label col-sm-2">ID Fiscale Debitore</label>
+					<div class="col-sm-2">
+						<input type="text" id="p6" ng-model="dati.pagamento.idFiscaleDebitore">
+					</div>
+				</div>
+			
+				<div class="form-group row">
+					<label class="form-control-label col-sm-2">IUV</label>
+					<div class="col-sm-2">
+						<input type="text" id="p7" ng-model="dati.pagamento.IUV">
+					</div>
+					<label class="form-control-label col-sm-2" title="p.e. Num. Reversale, Num Dichiarazione Contributo di Soggiorno, Num. Atto Contravvenzione, ...">Cod. dal Sistema D'Area</label>
+					<div class="col-sm-2">
+						<input type="text" id="p8" ng-model="dati.pagamento.idSA">
+					</div>
+					<div class="col-sm-2">
+						<span class="glyphicon glyphicon-info-sign" style="cursor:pointer; font-size:xx-large;" title="Richiedi informazioni sulla Posizione" ng-click="findInfoPosizione()" ></span>				</div>
+					</div>
+			</fieldset>
+
+		</div>
+	
+
+		<div class="container">
+		
+			<fieldset id="note" >
+				<legend>Note</legend>
+				
+				<div class="form-group row">
+					<div class="col-sm-12">
+						<textarea cols="120" rows="10" id="s4" ng-model="dati.segnalazione.note"></textarea>
+					</div>
+				</div>
+			</fieldset>
+		</div>
+	</div>
+</div>
+
+</html>

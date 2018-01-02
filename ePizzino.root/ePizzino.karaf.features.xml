@@ -1,0 +1,24 @@
+<features name="it.eng.ePizzino" xmlns="http://karaf.apache.org/xmlns/features/v1.4.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://karaf.apache.org/xmlns/features/v1.4.0
+	 http://karaf.apache.org/xmlns/features/v1.4.0">
+
+
+	<feature name="it.eng.ePizzino.env" version="0.0.1-SNAPSHOT" install="auto" start-level="48">
+
+		<feature dependency="true" prerequisite="true">it.pjsoft.reactive</feature>
+
+		<bundle dependency="true">mvn:org.mongodb/mongo-java-driver/3.6.1</bundle>
+
+	</feature>
+
+	<feature name="it.eng.ePizzino" version="0.0.1-SNAPSHOT" start-level="80">
+		<feature dependency="true" prerequisite="true">it.eng.ePizzino.env</feature>
+
+		<bundle start-level="80">mvn:it.eng.ePizzino/ePizzino.config/1.0.0-SNAPSHOT</bundle>
+		<bundle start-level="80">mvn:it.eng.ePizzino/ePizzino.biz/1.0.0-SNAPSHOT</bundle>
+		<bundle start-level="80">mvn:it.eng.ePizzino/ePizzino.webapp/1.0.0-SNAPSHOT</bundle>
+
+	</feature>
+
+</features>

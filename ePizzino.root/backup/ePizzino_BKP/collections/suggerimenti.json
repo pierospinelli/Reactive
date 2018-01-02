@@ -1,0 +1,36 @@
+{ 
+    "_id" : ObjectId("5a12a69f9f59854504893442"), 
+    "id" : "CA_1", 
+    "show" : "function(){\r\n\t\t\t\ttry{\r\n\t\t\t\t\tif(bke.$scope.dati.segnalazione.tipo=='CA')\r\n\t\t\t\t\t\treturn true;\r\n\t\t\t\t}catch(e){};\r\n\t\t\t\treturn false;\r\n\t\t\t\t}", 
+    "testo" : "Il certificato Anagrafico non viene inviato dal sistema dei pagamenti ma deve essere scaricato da portale dell'ente, previa autenticazione, accedendo nuovamente a servizi anagrafici."
+}
+{ 
+    "_id" : ObjectId("5a12a6a09f59854504893443"), 
+    "id" : "NP_1", 
+    "show" : "function(){\r\n\t\t\t\ttry{\r\n\t\t\t\t\tif(bke.$scope.dati.segnalazione.tipo=='NP'\r\n\t\t\t\t\t\t&& bke.$scope.dati.segnalazione.canale!='PW'\r\n\t\t\t\t\t\t&& !bke.$scope.dati.segnalazione.avvisatura)\r\n\t\t\t\t\t\treturn true;\r\n\t\t\t\t}catch(e){};\r\n\t\t\t\treturn false;\r\n\t\t\t\t}", 
+    "testo" : "Chiedere come Ã¨ avvenuta l'avvisatura e segnarlo nell'apposito campo"
+}
+{ 
+    "_id" : ObjectId("5a12a6a09f59854504893444"), 
+    "id" : "NP_2", 
+    "show" : "function(){\r\n\t\t\t\ttry{\r\n\t\t\t\t\tif(bke.$scope.dati.segnalazione.tipo=='NP'\r\n\t\t\t\t\t\t&& bke.$scope.dati.segnalazione.canale!='PW'\r\n\t\t\t\t\t\t&& bke.$scope.dati.segnalazione.canale!='POS'\r\n\t\t\t\t\t\t&& bke.$scope.dati.segnalazione.avvisatura==\"PDF\")\r\n\t\t\t\t\t\treturn true;\r\n\t\t\t\t}catch(e){};\r\n\t\t\t\treturn false;\r\n\t\t\t\t}", 
+    "testo" : "Accertarsi che l'avvisatura sia stata stampata tramite una stampante laser e la stampa sia stata eseguita con l'opzione dimensioni originali"
+}
+{ 
+    "_id" : ObjectId("5a12a6a09f59854504893445"), 
+    "id" : "NP_3", 
+    "show" : "function(){\r\n\t\t\t\ttry{\r\n\t\t\t\t\tif(bke.$scope.dati.segnalazione.tipo=='NP'\r\n\t\t\t\t\t\t&& bke.$scope.dati.segnalazione.canale!='POS'\r\n\t\t\t\t\t\t&& bke.$scope.dati.segnalazione.canale!='PW'\r\n\t\t\t\t\t\t&& bke.$scope.dati.segnalazione.avvisatura=='PO')\r\n\t\t\t\t\t\treturn true;\r\n\t\t\t\t}catch(e){};\r\n\t\t\t\treturn false;\r\n\t\t\t\t}", 
+    "testo" : "Inserire lo IUV e verificare con la funzione 'Info' il suo stato di pagabilitÃ "
+}
+{ 
+    "_id" : ObjectId("5a12a6a09f59854504893446"), 
+    "id" : "NR_1", 
+    "show" : "function(){\r\n\t\t\t\ttry{\r\n\t\t\t\t\tif(bke.$scope.dati.segnalazione.tipo=='NR'\r\n\t\t\t\t\t\t&& (bke.$scope.dati.segnalazione.canale=='POS'\r\n\t\t\t\t\t\t|| bke.$scope.dati.segnalazione.canale!='PW'))\r\n\t\t\t\t\t\treturn true;\r\n\t\t\t\t}catch(e){};\r\n\t\t\t\treturn false;\r\n\t\t\t\t}", 
+    "testo" : "Inserire lo IUV o l'ID originale del Sistema d'Area e verificare che la posizione sia stata effettivamente pagata. Se sÃ¬, utilizzare l'apposita funzione x spedirne una copia all'indirizzo email di chi ha fatto la segnalazione"
+}
+{ 
+    "_id" : ObjectId("5a12a6a09f59854504893447"), 
+    "id" : "NR_2", 
+    "show" : "function(){\r\n\t\t\t\ttry{\r\n\t\t\t\t\tif(bke.$scope.dati.segnalazione.tipo=='NR'\r\n\t\t\t\t\t\t&& bke.$scope.dati.segnalazione.canale!='POS'\r\n\t\t\t\t\t\t&& bke.$scope.dati.segnalazione.canale!='PW')\r\n\t\t\t\t\t\treturn true;\r\n\t\t\t\t}catch(e){};\r\n\t\t\t\treturn false;\r\n\t\t\t\t}", 
+    "testo" : "Inserire lo IUV o l'ID originale del Sistema d'Area e verificare che la posizione sia stata effettivamente pagata. Se sÃ¬, informare il cittadino che la ricevuta TODO????"
+}

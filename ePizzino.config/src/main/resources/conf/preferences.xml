@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<prefs id="reactive.system.preferences" xmlns="http://www.example.org/preferences">
+
+	<node node-path="/ePizzino/global">
+		<property name="doc">Global configuration</property>
+		<property name="appHost">http://10.144.206.234:8181</property>
+	</node>
+
+	<node node-path="/ePizzino/suggerimenti">
+		<node name="mail">
+			<property name="oggetto">Sistema Assistito di Customer Care di $$ente$$: ticket $$ticket$$</property>
+			<property name="testo"><![CDATA[
+				<p>Sistema Assistito di Customer Care di $$ente$$.</p>
+				
+				<p>In riferimento alla sua segnalazione del $$data$$, con numero di ticket $$ticket$$, 
+				il sistema assistito di customer care propone alcuni suggerimenti relativi alla tipologia di problema
+				esposto, sulla base delle soluzioni ricorrenti verificate in casi simili.</p>
+				
+				<p>Inoltre viene richiesto di completare, per quanto possibile in base delle conoscenze del richiedente, 
+				uno schema informativo che aiuti gli operatori ad indirizzare una soluzione nel più breve tempo possbile.</p>
+				
+				<p>Il sistema propone il seguente suggerimento: <i>$$suggerimento$$.</i></p>
+				
+				<p>Si prega di rispondere alla presente riferendo il relativo esito.</p>
+				
+				<p>Inoltre si prega di completare, almeno con i dati in proprio possesso, il seguente schema informativo:</p>
+				
+				$$schema$$
+				
+				<p>Distinti Saluti</p>
+			]]></property>
+		</node>
+	</node>
+
+</prefs>

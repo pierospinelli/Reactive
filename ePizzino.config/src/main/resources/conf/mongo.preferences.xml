@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<prefs id="reactive.system.preferences" xmlns="http://www.example.org/preferences">
+
+	<node node-path="/ePizzino/MongoDB">
+		<property name="doc">MongoDB connection URI for ePizzino</property>
+		
+		<node name="#TEST">
+			<node name="#LOCAL">
+				<property name="URI">mongodb://localhost:27017</property>	
+			</node>
+	
+			<node name="#REMOTE">
+				<property name="URI"><![CDATA[
+				mongodb://admin:ts.26261@clusterpjsoft1-shard-00-00-sjshq.mongodb.net:27017,
+				clusterpjsoft1-shard-00-01-sjshq.mongodb.net:27017,
+				clusterpjsoft1-shard-00-02-sjshq.mongodb.net:27017
+				/test?ssl=true&replicaSet=ClusterPJSoft1-shard-0&authSource=admin
+				]]></property>	
+			</node>
+		</node>
+	</node>
+
+</prefs>

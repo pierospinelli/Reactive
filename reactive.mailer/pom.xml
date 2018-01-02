@@ -1,0 +1,83 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>it.pjsoft.reactive</groupId>
+    <artifactId>reactive.root</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <relativePath>../reactive.root</relativePath>
+  </parent>
+  <artifactId>reactive.mailer</artifactId>
+  <name>it.pjsoft.reactive.mailer</name>
+  <packaging>bundle</packaging>
+  
+  
+  
+  
+  
+	<dependencies>
+	
+		<dependency>
+			<groupId>it.pjsoft.reactive</groupId>
+			<artifactId>reactive.core</artifactId>
+		</dependency>
+		
+		<dependency>
+		    <groupId>org.apache.servicemix.bundles</groupId>
+		    <artifactId>org.apache.servicemix.bundles.javax.mail</artifactId>
+		    <version>1.4.1_5</version>
+<!-- 		    <scope>provided</scope> -->
+<!-- 		    <optional>true</optional> -->
+		</dependency>
+
+	</dependencies>
+
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.felix</groupId>
+				<artifactId>maven-bundle-plugin</artifactId>
+				<extensions>true</extensions>
+				<configuration>
+					<instructions>
+						<Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
+						<Bundle-Version>${project.version}</Bundle-Version>
+						<Service-Component>*</Service-Component>
+						<Bundle-Activator>it.pjsoft.reactive.mailer.internal.Activator</Bundle-Activator>
+						<!-- <Export-Package> it.html.tutorial.karaf.helloworld*;version=${project.version} 
+							</Export-Package> -->
+						<Import-Package>
+							*
+						</Import-Package>
+					</instructions>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>copy-bundles</id>
+						<phase>package</phase>
+						<goals>
+							<goal>copy</goal>
+						</goals>
+						<configuration>
+							<artifactItems>
+								<artifactItem>
+									<groupId>${project.groupId}</groupId>
+									<artifactId>${project.artifactId}</artifactId>
+									<version>${project.version}</version>
+								</artifactItem>
+							</artifactItems>
+							<outputDirectory>${deployFolder}</outputDirectory>
+							<overWriteSnapshots>true</overWriteSnapshots>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+  
+</project>

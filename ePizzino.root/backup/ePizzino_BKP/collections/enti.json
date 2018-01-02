@@ -1,0 +1,20 @@
+{ 
+    "_id" : ObjectId("5a0f05bd9f598512d45e1b1a"), 
+    "codice" : "romacapitale", 
+    "nome" : " Roma Capitale"
+}
+{ 
+    "_id" : ObjectId("5a0f05bd9f598512d45e1b1b"), 
+    "codice" : "fiumicino", 
+    "nome" : "Fiumicino"
+}
+{ 
+    "_id" : ObjectId("5a0f05bd9f598512d45e1b1c"), 
+    "codice" : "caprapren", 
+    "nome" : " Capranica Prenestina"
+}
+{ 
+    "_id" : ObjectId("5a1405da9f59851e2c68a088"), 
+    "codice" : "frasc", 
+    "nome" : "Frascati"
+}

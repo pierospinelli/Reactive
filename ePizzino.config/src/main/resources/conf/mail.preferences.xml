@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<prefs id="reactive.system.preferences" xmlns="http://www.example.org/preferences">
+
+	<node node-path="/ePizzino/mail">
+		<property name="doc">Email configuration</property>
+		<property name="host">mail.comune.roma.it</property>
+		<property name="port">25</property>
+		<property name="from">supporto.tributi@comune.roma.it</property>
+		<property name="user">supporto.tributi</property>
+		<property name="password">pw280706</property>
+	</node>
+
+<!-- 	<node node-path="/ePizzino/mail"> -->
+<!-- 		<property name="doc">Email configuration</property> -->
+<!-- 		<property name="host">smtp.gmail.com</property> -->
+<!-- 		<property name="port">465</property> -->
+<!-- 		<property name="from">supporto.tributi@comune.roma.it</property> -->
+<!-- 		<property name="user">pierospinelli@gmail.com</property> -->
+<!-- 		<property name="password">tsperm61</property> -->
+<!-- 		<property name="SSL">true</property> -->
+<!-- 	</node> -->
+
+</prefs>

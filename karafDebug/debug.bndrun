@@ -1,0 +1,15 @@
+-runpath: biz.aQute.remote.launcher
+
+-runremote: test;\
+	shell   =   -1; \
+	jdb     =   5005; \
+	host    =   localhost; \
+	agent   =   29998; \
+	timeout =   10000
+
+-runproperties: gosh.args=--noshutdown
+
+-runtrace: true
+
+-runbundles: \
+	wsdebug

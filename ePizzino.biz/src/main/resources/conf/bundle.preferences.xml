@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<prefs id="reactive.system.preferences" xmlns="http://www.example.org/preferences">
+
+	<node node-path="/ePizzino">
+		
+		<node name="sql">
+			<property name="pagamentoM1ByIDRicevuta"><![CDATA[
+select *
+from pagamenti p
+where p.id_ricevuta=?		
+			]]></property>
+			<property name="debitiByIdPagamento"><![CDATA[
+select d.* 
+from debiti_pagati d
+where d.id_pagamento=?		
+			]]></property>
+			<property name="notificheByIdDebito"><![CDATA[
+select n.* 
+from stato_notifiche_debito n 
+where n.debito_pagato_id = ?		
+			]]></property>
+			
+		</node>
+
+
+		<node name="MongoDB">
+			<property name="elencoSegnalazioni"><![CDATA[
+{
+"query":	[
+		
+	{
+		"$sort": {
+			"dataCreazione": -1
+		}
+	},
+	
+		
+	{
+		"$lookup": {
+		    "from" : "enti",
+		    "localField" : "ente",
+		    "foreignField" : "codice",
+		    "as" : "ente"
+		}
+	},
+
+	{
+		"$unwind": {"path": "$ente", "preserveNullAndEmptyArrays": true}
+	},
+	
+	{
+		"$lookup": {
+		    "from" : "operatori",
+		    "localField" : "mittente.account",
+		    "foreignField" : "account",
+		    "as" : "operatore"
+		}
+	},
+
+	{
+		"$unwind": {"path": "$operatore", "preserveNullAndEmptyArrays": true}
+	},
+	
+	{
+		"$lookup": {
+		    "from": "contatti",
+		    "localField": "contatto.canale",
+		    "foreignField": "value",
+		    "as": "contatto"
+		}
+	},
+
+	{
+		"$unwind": {"path": "$contatto", "preserveNullAndEmptyArrays": true}
+	},
+
+	{
+		"$lookup": {
+		    "from": "crediti",
+		    "localField": "pagamento.credito",
+		    "foreignField": "value",
+		    "as": "credito"
+		}
+	},
+
+	{
+		"$unwind": {"path": "$credito", "preserveNullAndEmptyArrays": true}
+	},
+
+	{
+		"$lookup": {
+		    "from": "problemi",
+		    "localField": "segnalazione.tipo",
+		    "foreignField": "value",
+		    "as": "problema"
+		}
+	},
+
+	{
+		"$unwind": {"path": "$problema", "preserveNullAndEmptyArrays": true}
+	},
+
+	{
+		"$project": {
+		   	"_id": 1,
+		    "dataCreazione": 1,
+		    "ente": "$ente.nome",
+		    "operatore": "$operatore.nome",
+		    "cod_operatore": "$operatore.account",
+		    "contatto": "$contatto.label",
+		    "richiedente": "$richiedente.denominazione",
+		    "credito": "$credito.label",
+		    "problema" : { "$cond" : { "if" : "$problema.label", "then" : "$problema.label", "else" : "Altro..." } },
+		    "stato": 1,
+		    "modificato": 1
+		}
+	}
+	
+]}
+	
+			]]></property>
+		</node>
+
+
+	</node>
+</prefs>

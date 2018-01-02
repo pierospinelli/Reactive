@@ -1,0 +1,418 @@
+{ 
+    "_id" : "PJSoft2013-1510433483940", 
+    "hostname" : "PJSoft2013", 
+    "startTime" : ISODate("2017-11-11T20:51:23.000+0000"), 
+    "startTimeLocal" : "Sat Nov 11 21:51:23.940", 
+    "cmdLine" : {
+
+    }, 
+    "pid" : NumberLong(2864), 
+    "buildinfo" : {
+        "version" : "3.4.10", 
+        "gitVersion" : "078f28920cb24de0dd479b5ea6c66c644f6326e9", 
+        "targetMinOS" : "Windows 7/Windows Server 2008 R2", 
+        "modules" : [
+
+        ], 
+        "allocator" : "tcmalloc", 
+        "javascriptEngine" : "mozjs", 
+        "sysInfo" : "deprecated", 
+        "versionArray" : [
+            NumberInt(3), 
+            NumberInt(4), 
+            NumberInt(10), 
+            NumberInt(0)
+        ], 
+        "openssl" : {
+            "running" : "OpenSSL 1.0.1u-fips  22 Sep 2016", 
+            "compiled" : "OpenSSL 1.0.1u-fips  22 Sep 2016"
+        }, 
+        "buildEnvironment" : {
+            "distmod" : "2008plus-ssl", 
+            "distarch" : "x86_64", 
+            "cc" : "cl: Microsoft (R) C/C++ Optimizing Compiler Version 19.00.24223 for x64", 
+            "ccflags" : "/nologo /EHsc /W3 /wd4355 /wd4800 /wd4267 /wd4244 /wd4290 /wd4068 /wd4351 /we4013 /we4099 /we4930 /Z7 /errorReport:none /MD /O2 /Oy- /bigobj /Gw /Gy /Zc:inline", 
+            "cxx" : "cl: Microsoft (R) C/C++ Optimizing Compiler Version 19.00.24223 for x64", 
+            "cxxflags" : "/TP", 
+            "linkflags" : "/nologo /DEBUG /INCREMENTAL:NO /LARGEADDRESSAWARE /OPT:REF", 
+            "target_arch" : "x86_64", 
+            "target_os" : "windows"
+        }, 
+        "bits" : NumberInt(64), 
+        "debug" : false, 
+        "maxBsonObjectSize" : NumberInt(16777216), 
+        "storageEngines" : [
+            "devnull", 
+            "ephemeralForTest", 
+            "mmapv1", 
+            "wiredTiger"
+        ]
+    }
+}
+{ 
+    "_id" : "PJSoft2013-1510434750616", 
+    "hostname" : "PJSoft2013", 
+    "startTime" : ISODate("2017-11-11T21:12:30.000+0000"), 
+    "startTimeLocal" : "Sat Nov 11 22:12:30.616", 
+    "cmdLine" : {
+        "net" : {
+            "http" : {
+                "RESTInterfaceEnabled" : true, 
+                "enabled" : true
+            }
+        }
+    }, 
+    "pid" : NumberLong(6588), 
+    "buildinfo" : {
+        "version" : "3.4.10", 
+        "gitVersion" : "078f28920cb24de0dd479b5ea6c66c644f6326e9", 
+        "targetMinOS" : "Windows 7/Windows Server 2008 R2", 
+        "modules" : [
+
+        ], 
+        "allocator" : "tcmalloc", 
+        "javascriptEngine" : "mozjs", 
+        "sysInfo" : "deprecated", 
+        "versionArray" : [
+            NumberInt(3), 
+            NumberInt(4), 
+            NumberInt(10), 
+            NumberInt(0)
+        ], 
+        "openssl" : {
+            "running" : "OpenSSL 1.0.1u-fips  22 Sep 2016", 
+            "compiled" : "OpenSSL 1.0.1u-fips  22 Sep 2016"
+        }, 
+        "buildEnvironment" : {
+            "distmod" : "2008plus-ssl", 
+            "distarch" : "x86_64", 
+            "cc" : "cl: Microsoft (R) C/C++ Optimizing Compiler Version 19.00.24223 for x64", 
+            "ccflags" : "/nologo /EHsc /W3 /wd4355 /wd4800 /wd4267 /wd4244 /wd4290 /wd4068 /wd4351 /we4013 /we4099 /we4930 /Z7 /errorReport:none /MD /O2 /Oy- /bigobj /Gw /Gy /Zc:inline", 
+            "cxx" : "cl: Microsoft (R) C/C++ Optimizing Compiler Version 19.00.24223 for x64", 
+            "cxxflags" : "/TP", 
+            "linkflags" : "/nologo /DEBUG /INCREMENTAL:NO /LARGEADDRESSAWARE /OPT:REF", 
+            "target_arch" : "x86_64", 
+            "target_os" : "windows"
+        }, 
+        "bits" : NumberInt(64), 
+        "debug" : false, 
+        "maxBsonObjectSize" : NumberInt(16777216), 
+        "storageEngines" : [
+            "devnull", 
+            "ephemeralForTest", 
+            "mmapv1", 
+            "wiredTiger"
+        ]
+    }
+}
+{ 
+    "_id" : "PJSoft2013-1510572953783", 
+    "hostname" : "PJSoft2013", 
+    "startTime" : ISODate("2017-11-13T11:35:53.000+0000"), 
+    "startTimeLocal" : "Mon Nov 13 12:35:53.783", 
+    "cmdLine" : {
+        "net" : {
+            "http" : {
+                "RESTInterfaceEnabled" : true, 
+                "enabled" : true
+            }
+        }
+    }, 
+    "pid" : NumberLong(12944), 
+    "buildinfo" : {
+        "version" : "3.4.10", 
+        "gitVersion" : "078f28920cb24de0dd479b5ea6c66c644f6326e9", 
+        "targetMinOS" : "Windows 7/Windows Server 2008 R2", 
+        "modules" : [
+
+        ], 
+        "allocator" : "tcmalloc", 
+        "javascriptEngine" : "mozjs", 
+        "sysInfo" : "deprecated", 
+        "versionArray" : [
+            NumberInt(3), 
+            NumberInt(4), 
+            NumberInt(10), 
+            NumberInt(0)
+        ], 
+        "openssl" : {
+            "running" : "OpenSSL 1.0.1u-fips  22 Sep 2016", 
+            "compiled" : "OpenSSL 1.0.1u-fips  22 Sep 2016"
+        }, 
+        "buildEnvironment" : {
+            "distmod" : "2008plus-ssl", 
+            "distarch" : "x86_64", 
+            "cc" : "cl: Microsoft (R) C/C++ Optimizing Compiler Version 19.00.24223 for x64", 
+            "ccflags" : "/nologo /EHsc /W3 /wd4355 /wd4800 /wd4267 /wd4244 /wd4290 /wd4068 /wd4351 /we4013 /we4099 /we4930 /Z7 /errorReport:none /MD /O2 /Oy- /bigobj /Gw /Gy /Zc:inline", 
+            "cxx" : "cl: Microsoft (R) C/C++ Optimizing Compiler Version 19.00.24223 for x64", 
+            "cxxflags" : "/TP", 
+            "linkflags" : "/nologo /DEBUG /INCREMENTAL:NO /LARGEADDRESSAWARE /OPT:REF", 
+            "target_arch" : "x86_64", 
+            "target_os" : "windows"
+        }, 
+        "bits" : NumberInt(64), 
+        "debug" : false, 
+        "maxBsonObjectSize" : NumberInt(16777216), 
+        "storageEngines" : [
+            "devnull", 
+            "ephemeralForTest", 
+            "mmapv1", 
+            "wiredTiger"
+        ]
+    }
+}
+{ 
+    "_id" : "PJSoft2013-1510915208082", 
+    "hostname" : "PJSoft2013", 
+    "startTime" : ISODate("2017-11-17T10:40:08.000+0000"), 
+    "startTimeLocal" : "Fri Nov 17 11:40:08.082", 
+    "cmdLine" : {
+
+    }, 
+    "pid" : NumberLong(15288), 
+    "buildinfo" : {
+        "version" : "3.4.10", 
+        "gitVersion" : "078f28920cb24de0dd479b5ea6c66c644f6326e9", 
+        "targetMinOS" : "Windows 7/Windows Server 2008 R2", 
+        "modules" : [
+
+        ], 
+        "allocator" : "tcmalloc", 
+        "javascriptEngine" : "mozjs", 
+        "sysInfo" : "deprecated", 
+        "versionArray" : [
+            NumberInt(3), 
+            NumberInt(4), 
+            NumberInt(10), 
+            NumberInt(0)
+        ], 
+        "openssl" : {
+            "running" : "OpenSSL 1.0.1u-fips  22 Sep 2016", 
+            "compiled" : "OpenSSL 1.0.1u-fips  22 Sep 2016"
+        }, 
+        "buildEnvironment" : {
+            "distmod" : "2008plus-ssl", 
+            "distarch" : "x86_64", 
+            "cc" : "cl: Microsoft (R) C/C++ Optimizing Compiler Version 19.00.24223 for x64", 
+            "ccflags" : "/nologo /EHsc /W3 /wd4355 /wd4800 /wd4267 /wd4244 /wd4290 /wd4068 /wd4351 /we4013 /we4099 /we4930 /Z7 /errorReport:none /MD /O2 /Oy- /bigobj /Gw /Gy /Zc:inline", 
+            "cxx" : "cl: Microsoft (R) C/C++ Optimizing Compiler Version 19.00.24223 for x64", 
+            "cxxflags" : "/TP", 
+            "linkflags" : "/nologo /DEBUG /INCREMENTAL:NO /LARGEADDRESSAWARE /OPT:REF", 
+            "target_arch" : "x86_64", 
+            "target_os" : "windows"
+        }, 
+        "bits" : NumberInt(64), 
+        "debug" : false, 
+        "maxBsonObjectSize" : NumberInt(16777216), 
+        "storageEngines" : [
+            "devnull", 
+            "ephemeralForTest", 
+            "mmapv1", 
+            "wiredTiger"
+        ]
+    }
+}
+{ 
+    "_id" : "PJSoft2013-1510925803694", 
+    "hostname" : "PJSoft2013", 
+    "startTime" : ISODate("2017-11-17T13:36:43.000+0000"), 
+    "startTimeLocal" : "Fri Nov 17 14:36:43.694", 
+    "cmdLine" : {
+
+    }, 
+    "pid" : NumberLong(4196), 
+    "buildinfo" : {
+        "version" : "3.4.10", 
+        "gitVersion" : "078f28920cb24de0dd479b5ea6c66c644f6326e9", 
+        "targetMinOS" : "Windows 7/Windows Server 2008 R2", 
+        "modules" : [
+
+        ], 
+        "allocator" : "tcmalloc", 
+        "javascriptEngine" : "mozjs", 
+        "sysInfo" : "deprecated", 
+        "versionArray" : [
+            NumberInt(3), 
+            NumberInt(4), 
+            NumberInt(10), 
+            NumberInt(0)
+        ], 
+        "openssl" : {
+            "running" : "OpenSSL 1.0.1u-fips  22 Sep 2016", 
+            "compiled" : "OpenSSL 1.0.1u-fips  22 Sep 2016"
+        }, 
+        "buildEnvironment" : {
+            "distmod" : "2008plus-ssl", 
+            "distarch" : "x86_64", 
+            "cc" : "cl: Microsoft (R) C/C++ Optimizing Compiler Version 19.00.24223 for x64", 
+            "ccflags" : "/nologo /EHsc /W3 /wd4355 /wd4800 /wd4267 /wd4244 /wd4290 /wd4068 /wd4351 /we4013 /we4099 /we4930 /Z7 /errorReport:none /MD /O2 /Oy- /bigobj /Gw /Gy /Zc:inline", 
+            "cxx" : "cl: Microsoft (R) C/C++ Optimizing Compiler Version 19.00.24223 for x64", 
+            "cxxflags" : "/TP", 
+            "linkflags" : "/nologo /DEBUG /INCREMENTAL:NO /LARGEADDRESSAWARE /OPT:REF", 
+            "target_arch" : "x86_64", 
+            "target_os" : "windows"
+        }, 
+        "bits" : NumberInt(64), 
+        "debug" : false, 
+        "maxBsonObjectSize" : NumberInt(16777216), 
+        "storageEngines" : [
+            "devnull", 
+            "ephemeralForTest", 
+            "mmapv1", 
+            "wiredTiger"
+        ]
+    }
+}
+{ 
+    "_id" : "PJSoft2013-1510935107459", 
+    "hostname" : "PJSoft2013", 
+    "startTime" : ISODate("2017-11-17T16:11:47.000+0000"), 
+    "startTimeLocal" : "Fri Nov 17 17:11:47.459", 
+    "cmdLine" : {
+
+    }, 
+    "pid" : NumberLong(13440), 
+    "buildinfo" : {
+        "version" : "3.4.10", 
+        "gitVersion" : "078f28920cb24de0dd479b5ea6c66c644f6326e9", 
+        "targetMinOS" : "Windows 7/Windows Server 2008 R2", 
+        "modules" : [
+
+        ], 
+        "allocator" : "tcmalloc", 
+        "javascriptEngine" : "mozjs", 
+        "sysInfo" : "deprecated", 
+        "versionArray" : [
+            NumberInt(3), 
+            NumberInt(4), 
+            NumberInt(10), 
+            NumberInt(0)
+        ], 
+        "openssl" : {
+            "running" : "OpenSSL 1.0.1u-fips  22 Sep 2016", 
+            "compiled" : "OpenSSL 1.0.1u-fips  22 Sep 2016"
+        }, 
+        "buildEnvironment" : {
+            "distmod" : "2008plus-ssl", 
+            "distarch" : "x86_64", 
+            "cc" : "cl: Microsoft (R) C/C++ Optimizing Compiler Version 19.00.24223 for x64", 
+            "ccflags" : "/nologo /EHsc /W3 /wd4355 /wd4800 /wd4267 /wd4244 /wd4290 /wd4068 /wd4351 /we4013 /we4099 /we4930 /Z7 /errorReport:none /MD /O2 /Oy- /bigobj /Gw /Gy /Zc:inline", 
+            "cxx" : "cl: Microsoft (R) C/C++ Optimizing Compiler Version 19.00.24223 for x64", 
+            "cxxflags" : "/TP", 
+            "linkflags" : "/nologo /DEBUG /INCREMENTAL:NO /LARGEADDRESSAWARE /OPT:REF", 
+            "target_arch" : "x86_64", 
+            "target_os" : "windows"
+        }, 
+        "bits" : NumberInt(64), 
+        "debug" : false, 
+        "maxBsonObjectSize" : NumberInt(16777216), 
+        "storageEngines" : [
+            "devnull", 
+            "ephemeralForTest", 
+            "mmapv1", 
+            "wiredTiger"
+        ]
+    }
+}
+{ 
+    "_id" : "PJSoft2013-1510949780062", 
+    "hostname" : "PJSoft2013", 
+    "startTime" : ISODate("2017-11-17T20:16:20.000+0000"), 
+    "startTimeLocal" : "Fri Nov 17 21:16:20.081", 
+    "cmdLine" : {
+
+    }, 
+    "pid" : NumberLong(272), 
+    "buildinfo" : {
+        "version" : "3.4.10", 
+        "gitVersion" : "078f28920cb24de0dd479b5ea6c66c644f6326e9", 
+        "targetMinOS" : "Windows 7/Windows Server 2008 R2", 
+        "modules" : [
+
+        ], 
+        "allocator" : "tcmalloc", 
+        "javascriptEngine" : "mozjs", 
+        "sysInfo" : "deprecated", 
+        "versionArray" : [
+            NumberInt(3), 
+            NumberInt(4), 
+            NumberInt(10), 
+            NumberInt(0)
+        ], 
+        "openssl" : {
+            "running" : "OpenSSL 1.0.1u-fips  22 Sep 2016", 
+            "compiled" : "OpenSSL 1.0.1u-fips  22 Sep 2016"
+        }, 
+        "buildEnvironment" : {
+            "distmod" : "2008plus-ssl", 
+            "distarch" : "x86_64", 
+            "cc" : "cl: Microsoft (R) C/C++ Optimizing Compiler Version 19.00.24223 for x64", 
+            "ccflags" : "/nologo /EHsc /W3 /wd4355 /wd4800 /wd4267 /wd4244 /wd4290 /wd4068 /wd4351 /we4013 /we4099 /we4930 /Z7 /errorReport:none /MD /O2 /Oy- /bigobj /Gw /Gy /Zc:inline", 
+            "cxx" : "cl: Microsoft (R) C/C++ Optimizing Compiler Version 19.00.24223 for x64", 
+            "cxxflags" : "/TP", 
+            "linkflags" : "/nologo /DEBUG /INCREMENTAL:NO /LARGEADDRESSAWARE /OPT:REF", 
+            "target_arch" : "x86_64", 
+            "target_os" : "windows"
+        }, 
+        "bits" : NumberInt(64), 
+        "debug" : false, 
+        "maxBsonObjectSize" : NumberInt(16777216), 
+        "storageEngines" : [
+            "devnull", 
+            "ephemeralForTest", 
+            "mmapv1", 
+            "wiredTiger"
+        ]
+    }
+}
+{ 
+    "_id" : "PJSoft2013-1511074544944", 
+    "hostname" : "PJSoft2013", 
+    "startTime" : ISODate("2017-11-19T06:55:44.000+0000"), 
+    "startTimeLocal" : "Sun Nov 19 07:55:44.944", 
+    "cmdLine" : {
+
+    }, 
+    "pid" : NumberLong(16352), 
+    "buildinfo" : {
+        "version" : "3.4.10", 
+        "gitVersion" : "078f28920cb24de0dd479b5ea6c66c644f6326e9", 
+        "targetMinOS" : "Windows 7/Windows Server 2008 R2", 
+        "modules" : [
+
+        ], 
+        "allocator" : "tcmalloc", 
+        "javascriptEngine" : "mozjs", 
+        "sysInfo" : "deprecated", 
+        "versionArray" : [
+            NumberInt(3), 
+            NumberInt(4), 
+            NumberInt(10), 
+            NumberInt(0)
+        ], 
+        "openssl" : {
+            "running" : "OpenSSL 1.0.1u-fips  22 Sep 2016", 
+            "compiled" : "OpenSSL 1.0.1u-fips  22 Sep 2016"
+        }, 
+        "buildEnvironment" : {
+            "distmod" : "2008plus-ssl", 
+            "distarch" : "x86_64", 
+            "cc" : "cl: Microsoft (R) C/C++ Optimizing Compiler Version 19.00.24223 for x64", 
+            "ccflags" : "/nologo /EHsc /W3 /wd4355 /wd4800 /wd4267 /wd4244 /wd4290 /wd4068 /wd4351 /we4013 /we4099 /we4930 /Z7 /errorReport:none /MD /O2 /Oy- /bigobj /Gw /Gy /Zc:inline", 
+            "cxx" : "cl: Microsoft (R) C/C++ Optimizing Compiler Version 19.00.24223 for x64", 
+            "cxxflags" : "/TP", 
+            "linkflags" : "/nologo /DEBUG /INCREMENTAL:NO /LARGEADDRESSAWARE /OPT:REF", 
+            "target_arch" : "x86_64", 
+            "target_os" : "windows"
+        }, 
+        "bits" : NumberInt(64), 
+        "debug" : false, 
+        "maxBsonObjectSize" : NumberInt(16777216), 
+        "storageEngines" : [
+            "devnull", 
+            "ephemeralForTest", 
+            "mmapv1", 
+            "wiredTiger"
+        ]
+    }
+}

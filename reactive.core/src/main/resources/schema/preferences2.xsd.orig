@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.example.org/preferences"
+	xmlns:tns="http://www.example.org/preferences" elementFormDefault="qualified">
+
+    <element name="prefs" type="tns:prefs-type"></element>
+
+    <complexType name="prefs-type">
+	   	<complexContent>
+    		<extension base="tns:prefs-node-type">
+  				<sequence>
+	    			<element name="node" type="tns:prefs-system-node" minOccurs="0" maxOccurs="unbounded"></element>
+		      	</sequence>
+ 		    	<attribute name="id" type="string" use="required"></attribute>
+  			</extension>
+    	</complexContent>
+     </complexType>
+    
+     
+    <complexType name="prefs-node-type" abstract="true">
+    	<sequence>
+    		<element name="property" type="tns:prefs-property-type" minOccurs="0" maxOccurs="unbounded"></element>
+    	</sequence>
+    </complexType>
+
+    
+    <complexType name="prefs-system-node">
+    	<complexContent>
+    		<extension base="tns:prefs-node-type">
+    			<sequence>
+	    			<element name="node" type="tns:prefs-local-node" minOccurs="0" maxOccurs="unbounded"></element>
+		      	</sequence>
+    			<attribute name="node-path" type="string" use="required"></attribute>
+    		</extension>
+    	</complexContent>
+    </complexType>
+
+    <complexType name="prefs-local-node">
+    	<complexContent>
+    		<extension base="tns:prefs-node-type">
+  				<sequence>
+	    			<element name="node" type="tns:prefs-local-node" minOccurs="0" maxOccurs="unbounded"></element>
+		      	</sequence>
+		    	<attribute name="name" type="string" use="required"></attribute>
+  			</extension>
+    	</complexContent>
+    </complexType>
+    
+    
+    <complexType name="prefs-property-type" abstract="true">
+   		<attribute name="name" type="string" use="required"></attribute>
+    </complexType>
+
+	<complexType name="prefs-string-type">
+	   	<complexContent>
+   			<extension base="tns:prefs-property-type">
+	   			<attribute name="value" type="string" use="required"></attribute>
+ 			</extension>
+    	</complexContent>
+	</complexType>
+   
+   <complexType name="prefs-uri-type">
+	   	<complexContent>
+   			<extension base="tns:prefs-property-type">
+	   			<attribute name="value" type="anyURI" use="required"></attribute>
+ 			</extension>
+    	</complexContent>
+	</complexType>
+   
+   <complexType name="prefs-base64Binary-type">
+	   	<complexContent>
+   			<extension base="tns:prefs-property-type">
+	   			<attribute name="value" type="base64Binary" use="required"></attribute>
+ 			</extension>
+    	</complexContent>
+	</complexType>
+   
+   <complexType name="prefs-boolean-type">
+	   	<complexContent>
+   			<extension base="tns:prefs-property-type">
+	   			<attribute name="value" type="boolean" use="required"></attribute>
+ 			</extension>
+    	</complexContent>
+	</complexType>
+
+   <complexType name="prefs-byte-type">
+	   	<complexContent>
+   			<extension base="tns:prefs-property-type">
+	   			<attribute name="value" type="byte" use="required"></attribute>
+ 			</extension>
+    	</complexContent>
+	</complexType>
+
+   <complexType name="prefs-date-type">
+	   	<complexContent>
+   			<extension base="tns:prefs-property-type">
+	   			<attribute name="value" type="date" use="required"></attribute>
+ 			</extension>
+    	</complexContent>
+	</complexType>
+
+   <complexType name="prefs-dateTime-type">
+	   	<complexContent>
+   			<extension base="tns:prefs-property-type">
+	   			<attribute name="value" type="dateTime" use="required"></attribute>
+ 			</extension>
+    	</complexContent>
+	</complexType>
+
+   <complexType name="prefs-decimal-type">
+	   	<complexContent>
+   			<extension base="tns:prefs-property-type">
+	   			<attribute name="value" type="decimal" use="required"></attribute>
+ 			</extension>
+    	</complexContent>
+	</complexType>
+
+   <complexType name="prefs-double-type">
+	   	<complexContent>
+   			<extension base="tns:prefs-property-type">
+	   			<attribute name="value" type="double" use="required"></attribute>
+ 			</extension>
+    	</complexContent>
+	</complexType>
+
+   <complexType name="prefs-duration-type">
+	   	<complexContent>
+   			<extension base="tns:prefs-property-type">
+	   			<attribute name="value" type="duration" use="required"></attribute>
+ 			</extension>
+    	</complexContent>
+	</complexType>
+
+
+   <complexType name="prefs-float-type">
+	   	<complexContent>
+   			<extension base="tns:prefs-property-type">
+	   			<attribute name="value" type="float" use="required"></attribute>
+ 			</extension>
+    	</complexContent>
+	</complexType>
+
+   <complexType name="prefs-hexBinary-type">
+	   	<complexContent>
+   			<extension base="tns:prefs-property-type">
+	   			<attribute name="value" type="hexBinary" use="required"></attribute>
+ 			</extension>
+    	</complexContent>
+	</complexType>
+
+</schema>

@@ -1,0 +1,13 @@
+<features name="it.pjsoft.reactive"
+	xmlns="http://karaf.apache.org/xmlns/features/v1.4.0" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://karaf.apache.org/xmlns/features/v1.4.0
+	 http://karaf.apache.org/xmlns/features/v1.4.0">
+		<feature name="atomikos" version="3.9.3" >
+			<bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-j2ee-connector_1.5_spec/2.0.0</bundle>
+			<bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-jms_1.1_spec/1.1.1</bundle>
+			<bundle dependency="true">mvn:org.apache.geronimo.specs/geronimo-jta_1.1_spec/1.1.1</bundle>
+		
+			<bundle>mvn:com.atomikos/transactions-osgi/${atomikos.version}</bundle>
+		</feature>
+</features>

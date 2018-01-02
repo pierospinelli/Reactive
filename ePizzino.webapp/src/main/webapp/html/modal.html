@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">{{modal.header}}</h4>
+        </div>
+        <div class="modal-body">
+          <label for="m1">{{modal.prompt}}</label> 
+          <input id="m1" type="text" ng-model="modal.ret" />
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="modal.ret=null">{{modal.cancel}}</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">{{modal.ok}}</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+</html>
