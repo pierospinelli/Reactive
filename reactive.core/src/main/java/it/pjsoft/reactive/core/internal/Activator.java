@@ -286,10 +286,14 @@ public class Activator implements BundleActivator, ManagedService {
 			Node n = chs.item(i);
 			if (n.getNodeType() == Node.ELEMENT_NODE) {
 				Element nEl = (Element) n;
-				if ("node".equals(nEl.getLocalName()))
-					contrs.put("$$" + i, nEl.getAttribute("node-path"));
-				else if ("property".equals(nEl.getLocalName()))
-					setProperty(custom, nEl);
+				try {
+					if ("node".equals(nEl.getLocalName()))
+						contrs.put("$$" + i, nEl.getAttribute("node-path"));
+					else if ("property".equals(nEl.getLocalName()))
+						setProperty(custom, nEl);
+				} catch (Exception e) {
+					System.out.println("Error: " + e + " setting "+nEl.getLocalName()+" "+nEl.getAttribute("name"));
+				}
 			}
 		}
 
