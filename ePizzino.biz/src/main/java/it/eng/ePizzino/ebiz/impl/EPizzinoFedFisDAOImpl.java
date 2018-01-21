@@ -15,34 +15,37 @@ import it.eng.ePizzino.ebiz.api.EPizzinoFedFisDAO;
 
 @Component(service=EPizzinoFedFisDAO.class)
 public class EPizzinoFedFisDAOImpl implements EPizzinoFedFisDAO {
+
+	@Reference(name="fedfismw")
 	private DataSource dataSource;
 
+	@Reference
 	private TransactionControl control;
 
 	@Activate
 	void activate(BundleContext context) throws Exception {
 	}
 
-	@Reference(target= "(&"
-		+ "					(|"
-		+ "						(objectClass=javax.sql.DataSource)"
-		+ "						(objectClass=javax.sql.XADataSource)"
-		+ "					)"
-		+ "					(|"
-		+ "						(osgi.jndi.service.name=fedfismw)"
-		+ "						(datasource=fedfismw)"
-		+ "						(name=fedfismw)"
-		+ "						(service.id=fedfismw)"
-		+ "					)"
-		+ "				)")
-	public void setDataSource(DataSource dataSource) {
-		this.dataSource = dataSource;
-	}
-
-	@Reference
-	public void setTransaction(TransactionControl control) {
-		this.control = control;
-	}
+//	@Reference(target= "(&"
+//		+ "					(|"
+//		+ "						(objectClass=javax.sql.DataSource)"
+//		+ "						(objectClass=javax.sql.XADataSource)"
+//		+ "					)"
+//		+ "					(|"
+//		+ "						(osgi.jndi.service.name=fedfismw)"
+//		+ "						(datasource=fedfismw)"
+//		+ "						(name=fedfismw)"
+//		+ "						(service.id=fedfismw)"
+//		+ "					)"
+//		+ "				)")
+//	public void setDataSource(DataSource dataSource) {
+//		this.dataSource = dataSource;
+//	}
+//
+//	@Reference
+//	public void setTransaction(TransactionControl control) {
+//		this.control = control;
+//	}
 
 	@Override
 	public Map<String, Object> getPagamentoM1ByIDRicevuta(String idRicevuta) throws SQLException {

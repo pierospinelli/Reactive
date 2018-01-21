@@ -5,50 +5,42 @@
 	<packaging>pom</packaging>
 	<name>it.pjsoft.reactive.root</name>
 
-	
+
 	<parent>
 		<groupId>it.pjsoft.reactive</groupId>
 		<artifactId>reactive.version.root</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 		<relativePath>../reactive.version.root</relativePath>
 	</parent>
-	
+
 	<properties>
 
 	</properties>
 
 	<dependencyManagement>
 		<dependencies>
-	
+
 
 		</dependencies>
 	</dependencyManagement>
 
 	<dependencies>
-
-		<dependency>
-			<groupId>org.osgi</groupId>
-			<artifactId>org.osgi.core</artifactId>
-            <version>${osgi.version}</version>
- 			<scope>provided</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>biz.aQute</groupId>
-			<artifactId>bndlib</artifactId>
-		</dependency>
+		<!-- <dependency> <groupId>org.osgi</groupId> <artifactId>org.osgi.core</artifactId> 
+			<version>${osgi.version}</version> <scope>provided</scope> </dependency> 
+			<dependency> <groupId>biz.aQute</groupId> <artifactId>bndlib</artifactId> 
+			</dependency> -->
 
 		<dependency>
 			<groupId>org.osgi</groupId>
 			<artifactId>osgi.enroute.base.api</artifactId>
 		</dependency>
 
-<!-- 		<dependency> -->
-<!-- 			<groupId>org.apache.karaf.features</groupId> -->
-<!-- 			<artifactId>standard</artifactId> -->
-<!-- 			<version>4.1.2</version> -->
-<!-- 			<type>pom</type> -->
-<!-- 		</dependency> -->
+		<!-- <dependency> -->
+		<!-- <groupId>org.apache.karaf.features</groupId> -->
+		<!-- <artifactId>standard</artifactId> -->
+		<!-- <version>4.1.2</version> -->
+		<!-- <type>pom</type> -->
+		<!-- </dependency> -->
 
 		<dependency>
 			<groupId>org.apache.karaf.scheduler</groupId>
@@ -56,24 +48,47 @@
 			<scope>provided</scope>
 		</dependency>
 
-	    <dependency>
-	        <groupId>org.mongodb</groupId>
-	        <artifactId>mongodb-driver</artifactId>
-	        <version>3.5.0</version>
-	    </dependency>
+		<dependency>
+			<groupId>org.mongodb</groupId>
+			<artifactId>mongodb-driver</artifactId>
+			<version>3.5.0</version>
+		</dependency>
 
-        <!-- Just for the remote service admin spec -->
-        <dependency>
-        	<groupId>org.apache.aries.rsa</groupId>
-        	<artifactId>org.apache.aries.rsa.core</artifactId>
-        	<version>${aries.version}</version>
-        </dependency>
+		<!-- Just for the remote service admin spec -->
+		<dependency>
+			<groupId>org.apache.aries.rsa</groupId>
+			<artifactId>org.apache.aries.rsa.core</artifactId>
+			<version>${aries.version}</version>
+		</dependency>
 
-        <dependency>
-            <groupId>org.apache.aries.rsa</groupId>
-            <artifactId>org.apache.aries.rsa.spi</artifactId>
-            <version>${aries.version}</version>
-        </dependency>
+		<dependency>
+			<groupId>org.apache.aries.rsa</groupId>
+			<artifactId>org.apache.aries.rsa.spi</artifactId>
+			<version>${aries.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.aries.tx-control</groupId>
+			<!-- <artifactId>tx-control-service-xa</artifactId> -->
+			<artifactId>tx-control-service-local</artifactId>
+			<version>RELEASE</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.aries.tx-control</groupId>
+			<!-- <artifactId>tx-control-provider-jdbc-xa</artifactId> -->
+			<artifactId>tx-control-provider-jdbc-local</artifactId>
+			<version>RELEASE</version>
+<!--ATTENZIONE: con optional non funziona 			<optional>true</optional> -->
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.aries.tx-control</groupId>
+<!-- 			<artifactId>tx-control-provider-jpa-xa</artifactId>  -->
+			<artifactId>tx-control-provider-jpa-local</artifactId>
+			<version>RELEASE</version>
+<!--ATTENZIONE: con optional non funziona 			<optional>true</optional> -->
+		</dependency>
 
 	</dependencies>
 
@@ -100,12 +115,14 @@
 			</plugin>
 		</plugins>
 	</build>
-	
+
 	<modules>
 		<module>../reactive.core</module>
 		<module>../reactive.generic</module>
 		<module>../reactive.rs</module>
+<!-- 		<module>../reactive.ws</module> -->
 		<module>../reactive.mailer</module>
+		<module>../reactive.test</module>
 	</modules>
 
 </project>

@@ -24,12 +24,12 @@
 	</dependencyManagement>
 
 	<dependencies>
-		<dependency>
+<!-- 		<dependency>
 			<groupId>biz.aQute</groupId>
 			<artifactId>bndlib</artifactId>
 			<scope>provided</scope>
 		</dependency>
-
+ -->
 		<dependency>
 			<groupId>org.osgi</groupId>
 			<artifactId>osgi.enroute.base.api</artifactId>

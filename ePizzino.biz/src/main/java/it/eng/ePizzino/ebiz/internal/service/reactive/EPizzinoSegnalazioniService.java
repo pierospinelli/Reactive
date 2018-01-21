@@ -42,8 +42,10 @@ property= {"component.qualifier=reactive",
 		"component.layer="+RtContext.LAYER_INNER_BOUNDARY})
 public class EPizzinoSegnalazioniService implements ReactiveComponent<GenericResponse, GenericRequest>{
 	
+	@Reference(service=EPizzinoSegnalazioniDAO.class)
 	private EPizzinoSegnalazioniDAO dao= null;
 	
+	@Reference(service=ReactiveMailer.class)
 	private ReactiveMailer mailer = null;
 	
 	@Override
@@ -277,23 +279,23 @@ public class EPizzinoSegnalazioniService implements ReactiveComponent<GenericRes
 	}
 
 
-	@Reference(service=EPizzinoSegnalazioniDAO.class)
-	public void setDAO(final EPizzinoSegnalazioniDAO dao) {
-		this.dao = dao;
-	}
-
-	public void unsetDAO(final EPizzinoSegnalazioniDAO dao) {
-		this.dao = null;
-	}
-
-	@Reference(service=ReactiveMailer.class)
-	public void setMailer(final ReactiveMailer mailer) {
-		this.mailer = mailer;
-	}
-
-	public void unsetMailer(final ReactiveMailer mailer) {
-		this.mailer = null;
-	}
+//	@Reference(service=EPizzinoSegnalazioniDAO.class)
+//	public void setDAO(final EPizzinoSegnalazioniDAO dao) {
+//		this.dao = dao;
+//	}
+//
+//	public void unsetDAO(final EPizzinoSegnalazioniDAO dao) {
+//		this.dao = null;
+//	}
+//
+//	@Reference(service=ReactiveMailer.class)
+//	public void setMailer(final ReactiveMailer mailer) {
+//		this.mailer = mailer;
+//	}
+//
+//	public void unsetMailer(final ReactiveMailer mailer) {
+//		this.mailer = null;
+//	}
 
 
 }

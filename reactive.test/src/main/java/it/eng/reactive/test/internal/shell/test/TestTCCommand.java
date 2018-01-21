@@ -1,44 +1,60 @@
-package it.eng.ePizzino.ebiz.internal.shell;
+package it.eng.reactive.test.internal.shell.test;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import java.util.concurrent.Callable;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.sql.DataSource;
-import javax.transaction.SystemException;
-import javax.transaction.Transaction;
-import javax.transaction.UserTransaction;
 
-import org.osgi.framework.ServiceReference;
+import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
+import org.osgi.service.transaction.control.TransactionControl;
+import org.osgi.service.transaction.control.jdbc.JDBCConnectionProviderFactory;
 
-import it.eng.ePizzino.ebiz.internal.Activator;
 import osgi.enroute.debug.api.Debug;
 
+// https://issues.apache.org/jira/browse/ARIES-1767 (pierospinelli/ts262611)
 
-@Component(service = TestTXCommand.class, name = "testtx", 
-property = { Debug.COMMAND_SCOPE + "=test",
-		Debug.COMMAND_FUNCTION + "=tx" })
-public class TestTXCommand {
+@Component(service = TestTCCommand.class, name = "testtc", 
+		   property = { Debug.COMMAND_SCOPE + "=test", Debug.COMMAND_FUNCTION + "=tc" })
+public class TestTCCommand {
 
+	@Reference
+	private TransactionControl txControl = null;
+
+//	@Reference(target = "(&" 
+//	+ "					(|" 
+//	+ "						(objectClass=javax.sql.DataSource)"
+//	+ "						(objectClass=javax.sql.XADataSource)" 
+//	+ "					)"
+//	+ "					(|" 
+//	+ "						(osgi.jndi.service.name=fedfismw)"
+//	+ "						(datasource=fedfismw)" 
+//	+ "						(name=fedfismw)"
+//	+ "						(service.id=fedfismw)" 
+//	+ "					)" 
+//	+ "				)")
+	@Reference(name="fedfismw")
 	private DataSource dataSource;
 	
-	private UserTransaction transaction;
-	private MyCtrl control = new MyCtrl();
+	@Reference
+	private JDBCConnectionProviderFactory providerFactory;
 	
 	private Object sem=new Object();
-
-	public String tx(final int cycles) {
+	
+	private Connection con; 
+	
+	public String tc(final int cycles) {
 		try {
-			
-			control.requiresNew(() -> {
 
-				try (Connection con = dataSource.getConnection(); 
-					Statement st = con.createStatement();
-					 Statement st2 = con.createStatement();) {
+			txControl.requiresNew(() -> {
+
+				try (Statement st = con.createStatement();
+					Statement st2 = con.createStatement();) {
 					boolean exists = false;
 					try (ResultSet rs = st.executeQuery("select * from LONG_TERM_STATA where TARGET = 'TEST'");) {
 						while (rs.next()) {
@@ -58,10 +74,9 @@ public class TestTXCommand {
 				return 0L;
 			});
 
-			int elaborated = control.requiresNew(() -> {
+			int elaborated = txControl.requiresNew(() -> {
 
-				try (Connection con = dataSource.getConnection(); 
-					 Statement st = con.createStatement();
+				try (Statement st = con.createStatement();
 					 Statement st2 = con.createStatement();) {
 
 					for (int i = 0; i < cycles; i++) {
@@ -81,24 +96,20 @@ public class TestTXCommand {
 			});
 
 			System.out.println("VIA");
-			control.requiresNew(() -> {
-				try (Connection con = dataSource.getConnection(); 
-						PreparedStatement st = con.prepareStatement(
+			txControl.requiresNew(() -> {
+				try (PreparedStatement st = con.prepareStatement(
 								"select * from LONG_TERM_STATA where TARGET = 'TEST' AND PROCESSO='TEST_SNG' FOR UPDATE",
 			                    ResultSet.TYPE_FORWARD_ONLY, ResultSet.CONCUR_UPDATABLE);
 						ResultSet rs = st.executeQuery()) {
 							System.out.println("Start transaction MAIN" );
-//							System.out.println("Active scope/active: "+control.activeScope()+"/"+control.activeTransaction());
+							System.out.println("Active scope/active: "+txControl.activeScope()+"/"+txControl.activeTransaction());
 							System.out.println("Transaction isolation level: "+con.getTransactionIsolation());
-//							System.out.println("Transaction Key: "+control.getCurrentContext().getTransactionKey());
-//							System.out.println("Transaction Status: "+control.getCurrentContext().getTransactionStatus());
-//							System.out.println("Transaction Context: "+control.getCurrentContext().hashCode());
+							System.out.println("Transaction Key: "+txControl.getCurrentContext().getTransactionKey());
+							System.out.println("Transaction Status: "+txControl.getCurrentContext().getTransactionStatus());
+							System.out.println("Transaction Context: "+txControl.getCurrentContext().hashCode());
 					synchronized(sem) {
 						sem.notifyAll();
 					}
-
-					Thread.sleep(10000);
-
 				}
 				return 0;
 			});
@@ -123,21 +134,20 @@ public class TestTXCommand {
 				final String name = "Thread " + id;
 				synchronized (sem) {
 					System.out.println("Start thread " + name);
-//					System.out.println("Active scope/active: "+control.activeScope()+"/"+control.activeTransaction());
+					System.out.println("Active scope/active: "+txControl.activeScope()+"/"+txControl.activeTransaction());
 				}
 				
-				control.requiresNew(() ->{
-					try (Connection con = dataSource.getConnection(); 
-							PreparedStatement st = con.prepareStatement(
+				txControl.build().requiresNew(() ->{
+					try (PreparedStatement st = con.prepareStatement(
 									"select * from LONG_TERM_STATA where TARGET = 'TEST' AND PROCESSO='TEST_SNG' FOR UPDATE",
 				                    ResultSet.TYPE_FORWARD_ONLY, ResultSet.CONCUR_UPDATABLE);) {
 							synchronized (sem) {
 								System.out.println("Start transaction " + name);
-//								System.out.println("Active scope/active: "+control.activeScope()+"/"+control.activeTransaction());
+								System.out.println("Active scope/active: "+txControl.activeScope()+"/"+txControl.activeTransaction());
 								System.out.println("Transaction isolation level: "+con.getTransactionIsolation());
-//								System.out.println("Transaction Key: "+control.getCurrentContext().getTransactionKey());
-//								System.out.println("Transaction Status: "+control.getCurrentContext().getTransactionStatus());
-//								System.out.println("Transaction Context: "+control.getCurrentContext().hashCode());
+								System.out.println("Transaction Key: "+txControl.getCurrentContext().getTransactionKey());
+								System.out.println("Transaction Status: "+txControl.getCurrentContext().getTransactionStatus());
+								System.out.println("Transaction Context: "+txControl.getCurrentContext().hashCode());
 							}
 
 //							st.executeUpdate("UPDATE long_term_stata SET STATUS = convert(STATUS, unsigned)+1 where TARGET = 'TEST' AND PROCESSO='TEST_SNG'");
@@ -158,47 +168,19 @@ public class TestTXCommand {
 		th.start();
 	}
 
-	@Reference
-	public void setTransaction(UserTransaction transaction) {
-		this.transaction = transaction;
-	}
-
-	@Reference(target = "(&" 
-			+ "		(|" 
-			+ "			(objectClass=javax.sql.DataSource)"
-			+ "			(objectClass=javax.sql.XADataSource)" 
-			+ "		)"
-			+ "		(|" 
-			+ "			(osgi.jndi.service.name=fedfismw)"
-			+ "			(datasource=fedfismw)" 
-			+ "			(name=fedfismw)"
-			+ "			(service.id=fedfismw)" 
-			+ "		)" 
-			+ "	)")
-	public void setDataSource(DataSource dataSource) {
-		this.dataSource = dataSource;
-//		ServiceReference<UserTransaction> txref = Activator.getContext().getServiceReference(UserTransaction.class);
-//		this.transaction =  Activator.getContext().getService(txref); 
-	}
 
 	
-	class MyCtrl{
+	 @Activate
+    void start() {
+	
+        Map<String, Object> providerProps = new HashMap<>();
 
-		public <T> T requiresNew(Callable<T> callable) {
-			try {
-				transaction.begin();
-				T ret = callable.call();
-				transaction.commit();
-				return ret;
-			}catch(Throwable th) {
-				try {
-					transaction.rollback();
-				} catch (IllegalStateException | SystemException e) {
-					
-				}
-				throw new RuntimeException(th);
-			}
+        try {
+			con = providerFactory.getProviderFor(dataSource,  providerProps).getResource(txControl);
+		} catch (Throwable e) {
+			e.printStackTrace();
 		}
-		
-	}
+    }
+
+
 }

@@ -16,6 +16,7 @@ import osgi.enroute.debug.api.Debug;
 		Debug.COMMAND_FUNCTION + "=config" })
 public class EPizzinoConfigDAOCommand {
 	
+	@Reference(service=EPizzinoConfigDAO.class)
 	private EPizzinoConfigDAO dao= null;
 	
 	public void config(String col, String... pars) {
@@ -112,12 +113,12 @@ public class EPizzinoConfigDAOCommand {
 			System.out.println("Elemento non trovato");
 	}
 
-	@Reference(service=EPizzinoConfigDAO.class)
-	public void setDAO(final EPizzinoConfigDAO dao) {
-		this.dao = dao;
-	}
-
-	public void unsetDAO(final EPizzinoConfigDAO dao) {
-		this.dao = null;
-	}
+//	@Reference(service=EPizzinoConfigDAO.class)
+//	public void setDAO(final EPizzinoConfigDAO dao) {
+//		this.dao = dao;
+//	}
+//
+//	public void unsetDAO(final EPizzinoConfigDAO dao) {
+//		this.dao = null;
+//	}
 }

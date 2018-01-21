@@ -24,6 +24,7 @@ property= {"component.qualifier=reactive",
 		"component.layer="+RtContext.LAYER_INNER_BOUNDARY})
 public class EPizzinoConfigService implements ReactiveComponent<String, String[]>{
 	
+	@Reference(service=EPizzinoConfigDAO.class)
 	private EPizzinoConfigDAO dao= null;
 	
 	@Override
@@ -121,14 +122,14 @@ public class EPizzinoConfigService implements ReactiveComponent<String, String[]
 	}
 
 
-	@Reference(service=EPizzinoConfigDAO.class)
-	public void setDAO(final EPizzinoConfigDAO dao) {
-		this.dao = dao;
-	}
-
-	public void unsetDAO(final EPizzinoConfigDAO dao) {
-		this.dao = null;
-	}
+//	@Reference(service=EPizzinoConfigDAO.class)
+//	public void setDAO(final EPizzinoConfigDAO dao) {
+//		this.dao = dao;
+//	}
+//
+//	public void unsetDAO(final EPizzinoConfigDAO dao) {
+//		this.dao = null;
+//	}
 
 
 }

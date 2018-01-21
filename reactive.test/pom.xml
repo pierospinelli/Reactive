@@ -1,44 +1,28 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <artifactId>reative.test</artifactId>
+  <name>it.pjsoft.reactive.test</name>
+
+	<packaging>bundle</packaging>
 	<parent>
-		<groupId>it.eng.ePizzino</groupId>
-		<artifactId>ePizzino.root</artifactId>
-		<version>1.0.0-SNAPSHOT</version>
-		<relativePath>../ePizzino.root</relativePath>
+		<groupId>it.pjsoft.reactive</groupId>
+		<artifactId>reactive.root</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+		<relativePath>../reactive.root</relativePath>
 	</parent>
 
-	<artifactId>ePizzino.biz</artifactId>
-	<name>it.eng.ePizzino.biz</name>
-	<packaging>bundle</packaging>
 
 	<dependencies>
-		<dependency>
-			<groupId>org.apache.karaf.shell</groupId>
-			<artifactId>org.apache.karaf.shell.console</artifactId>
-		</dependency>
-		
-		<!-- https://mvnrepository.com/artifact/org.apache.aries.tx-control/tx-control-provider-jdbc-xa -->
+
+
 	<dependency>
-	    <groupId>org.apache.aries.tx-control</groupId>
-<!-- 	    <artifactId>tx-control-service-xa</artifactId> -->
-	    <artifactId>tx-control-service-local</artifactId>
-	    <version>RELEASE</version>
+		<groupId>it.pjsoft.reactive</groupId>
+		<artifactId>reactive.core</artifactId>
 	</dependency>
-			
-	<dependency>
-	    <groupId>org.apache.aries.tx-control</groupId>
-<!-- 	    <artifactId>tx-control-provider-jdbc-xa</artifactId> -->
-	    <artifactId>tx-control-provider-jdbc-local</artifactId>
-	    <version>RELEASE</version>
-	</dependency>
-		
-		 
 	</dependencies>
 
 	<build>
 		<plugins>
-
 			<plugin>
 				<groupId>org.apache.felix</groupId>
 				<artifactId>maven-bundle-plugin</artifactId>
@@ -48,7 +32,7 @@
 						<Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
 						<Bundle-Version>${project.version}</Bundle-Version>
 						<Service-Component>*</Service-Component>
-						<Bundle-Activator>it.eng.ePizzino.ebiz.internal.Activator</Bundle-Activator>
+						<Bundle-Activator>it.eng.reactive.test.internal.Activator</Bundle-Activator>
 						<!-- <Export-Package> it.html.tutorial.karaf.helloworld*;version=${project.version} 
 							</Export-Package> -->
 						<Import-Package>

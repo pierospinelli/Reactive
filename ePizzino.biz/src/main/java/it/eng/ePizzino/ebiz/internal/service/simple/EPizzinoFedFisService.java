@@ -21,6 +21,7 @@ property= {"component.qualifier=reactive",
 		"component.layer="+RtContext.LAYER_INNER_BOUNDARY})
 public class EPizzinoFedFisService implements ReactiveComponent<String, String[]>{
 	
+	@Reference(service=EPizzinoFedFisDAO.class)
 	private EPizzinoFedFisDAO dao= null;
 	
 	private ObjectMapper om = new ObjectMapper();
@@ -78,14 +79,14 @@ public class EPizzinoFedFisService implements ReactiveComponent<String, String[]
 
 
 
-	@Reference(service=EPizzinoFedFisDAO.class)
-	public void setDAO(final EPizzinoFedFisDAO dao) {
-		this.dao = dao;
-	}
-
-	public void unsetDAO(final EPizzinoFedFisDAO dao) {
-		this.dao = null;
-	}
+//	@Reference(service=EPizzinoFedFisDAO.class)
+//	public void setDAO(final EPizzinoFedFisDAO dao) {
+//		this.dao = dao;
+//	}
+//
+//	public void unsetDAO(final EPizzinoFedFisDAO dao) {
+//		this.dao = null;
+//	}
 
 
 }
