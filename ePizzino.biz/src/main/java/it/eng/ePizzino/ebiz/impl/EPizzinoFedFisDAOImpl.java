@@ -24,6 +24,7 @@ public class EPizzinoFedFisDAOImpl implements EPizzinoFedFisDAO {
 
 	@Activate
 	void activate(BundleContext context) throws Exception {
+		System.out.println(getClass().getName()+ " service activated");
 	}
 
 //	@Reference(target= "(&"

@@ -11,8 +11,8 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-		<!-- <deployFolder>/KARAF/apache-karaf-4.1.1/deploy</deployFolder> -->
-		<deployFolder>/KARAF/apache-karaf-4.2.0.M1/deploy</deployFolder>
+		<deployFolder>/home/piero/apache-karaf-4.1.2/deploy</deployFolder>
+<!-- 		<deployFolder>/KARAF/apache-karaf-4.2.0.M1/deploy</deployFolder> -->
 
 		<reactive.version>0.0.1-SNAPSHOT</reactive.version>
 
