@@ -170,9 +170,10 @@ public class TestTCCommand {
 
 
 	
-	 @Activate
-    void start() {
-	
+	@Activate
+    public void start() {
+		System.out.println(getClass().getName()+ " service activated");
+
         Map<String, Object> providerProps = new HashMap<>();
 
         try {

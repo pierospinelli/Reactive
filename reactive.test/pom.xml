@@ -13,12 +13,10 @@
 
 
 	<dependencies>
-
-
-	<dependency>
-		<groupId>it.pjsoft.reactive</groupId>
-		<artifactId>reactive.core</artifactId>
-	</dependency>
+		<dependency>
+			<groupId>it.pjsoft.reactive</groupId>
+			<artifactId>reactive.core</artifactId>
+		</dependency>
 	</dependencies>
 
 	<build>
