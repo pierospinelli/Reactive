@@ -1,7 +1,8 @@
 http://enroute.osgi.org/tutorial_eval/100-parent.html
 http://njbartlett.name/2015/03/27/announcing-bnd-maven-plugin.html
 https://www.eclipsecon.org/europe2017/session-tracks/osgi
-
+https://git-scm.com/book/en/v2/Git-Basics-Undoing-Things
+https://jaxenter.com/tutorial-using-jpa-in-an-osgi-environment-103494.html
 
 
 KARAF (felix)
